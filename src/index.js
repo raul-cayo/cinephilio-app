@@ -14,20 +14,18 @@ import * as serviceWorker from './serviceWorker';
 ReactDOM.render(<App />, document.getElementById('root'));
 
 ReactDOM.render(
-  <Provider>
-    <Router>
-      <App>
-        <Switch>
-          <Route exact path="/" component={FrontPage} />
-          <Route path="/about" component={About} />
-          <Route path="/anonRecomm" component={AnonRecommendation} />
-          <Route path="/login" component={Login} />
-          <Route path="/signup" component={Signup} />
-          <Route path='*' component={() => "404 NOT FOUND, no sé que ande buscando pero aquí no está. Justo como el amor de ella por ti."}/>
-        </Switch>
-      </App>
-    </Router>
-  </Provider>
+  <Router>
+    <App>
+      <Switch>
+        <Route exact path="/" component={FrontPage} />
+        <Route path="/about" component={About} />
+        <Route path="/anonRecomm" component={AnonRecommendation} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
+        <Route path='*' component={() => "404 NOT FOUND, no sé que ande buscando pero aquí no está. Justo como el amor de ella por ti."}/>
+      </Switch>
+    </App>
+  </Router>
 , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
