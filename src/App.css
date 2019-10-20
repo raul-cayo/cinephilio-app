@@ -17,6 +17,8 @@ body {
 
 h1 {
   font-family: 'Lobster Two', cursive;
+  font-size: 3rem;
+  color: #F8F8F8;
 }
 
 /***************************** Buttons ******************************/

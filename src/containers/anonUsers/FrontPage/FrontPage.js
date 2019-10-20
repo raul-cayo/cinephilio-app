@@ -17,7 +17,7 @@ function FrontPage(props) {
               <Link to="/login" className="btn cbt-lg-green btn-block mb-3 col-lg-4 offset-lg-4">Iniciar Sesión</Link>
               <Link to="/signup" className="btn cbt-lg-green btn-block mb-3 col-lg-4 offset-lg-4">Registrarme</Link>
               <Link to="/about" className="btn cbt-blue btn-block mb-3 col-lg-4 offset-lg-4">¿Qué es Cinephilio?</Link>
-              <Link to="/anonRecommendation" className="btn cbt-blue btn-block mb-3 col-lg-4 offset-lg-4">Recomiéndame una Película</Link>
+              <Link to="/anonRecomm" className="btn cbt-blue btn-block mb-3 col-lg-4 offset-lg-4">Recomiéndame una Película</Link>
           </div>
       </div>
   )
