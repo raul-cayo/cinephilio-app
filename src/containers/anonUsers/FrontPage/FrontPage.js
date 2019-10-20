@@ -2,15 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import Logo from '../../../images/LogoDark.png';
+import './FrontPage.css';
 
 function FrontPage(props) {
   return (
       <div className="container mt-5">
           <div className="row align-self-center">
-              <img className="main-logo rounded-circle mx-auto d-block" src={Logo} alt="Logo Cinephilio"/>
+              <img className="FrontPage-logo rounded-circle mx-auto d-block" src={Logo} alt="Logo Cinephilio"/>
           </div>
           <div className="row align-self-center">
-              <h1 className="main-title my-3 text-center mx-auto">Cinephilio</h1>
+              <h1 className="FrontPage-title my-3 text-center mx-auto">Cinephilio</h1>
           </div>
           <div className="row align-self-center px-4">
               <Link to="/login" className="btn cbt-lg-green btn-block mb-3 col-lg-4 offset-lg-4">Iniciar Sesión</Link>
