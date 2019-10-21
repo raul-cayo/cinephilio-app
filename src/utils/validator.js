@@ -1,7 +1,7 @@
 import Validator from 'validator';
 import isEmpty from 'lodash/isEmpty';
 
-export default function signupValidator(data){
+export function signupValidator(data){
     let errors = {};
 
     if(Validator.isEmpty(data.username)){
