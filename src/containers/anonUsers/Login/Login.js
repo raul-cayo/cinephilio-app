@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Logo from '../../../images/LogoDark.png';
-import './Login.css';
 
 class Login extends React.Component {
   constructor(props) {
@@ -28,12 +27,12 @@ class Login extends React.Component {
         <h1 className="titulo-form text-center align-self-center mt-4">Acceso</h1>
         <div className="row align-self-center mt-1 mb-2 px-4">
           <div className="col-12 col-md-3">
-            <img className="logo-2nd rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
+            <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
           </div>
           <p className="my-auto text-box col-12 col-md-9 py-3">Ingresa con tu cuenta para darte las mejores recomendaciones.</p>
         </div>
 
-        <form className="text-center p-2 align-self-center register" onSubmit={this.prevent}>
+        <form className="text-center p-2 align-self-center" onSubmit={this.prevent}>
           <div className="form-group">
             <label className="control-label">Correo Electrónico</label>
             <input onChange={this.updateInput} value={this.state.email} type="email" name="email" className="form-control" />
