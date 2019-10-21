@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
-import Logo from '../../img/LogoDark.png'
+import Logo from '../../../images/LogoDark.png'
 import './Signup.css';
 
 class Signup extends React.Component {
