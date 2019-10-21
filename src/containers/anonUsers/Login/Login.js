@@ -35,7 +35,7 @@ class Login extends React.Component {
   }
 
   render() {
-    const {errors} = this.state.errors;
+    const errors = this.state.errors;
 
     return (
       <div className="col-lg-8 offset-lg-2">
@@ -48,7 +48,7 @@ class Login extends React.Component {
         </div>
 
         <form className="text-center p-2 align-self-center" onSubmit={this.login.bind(this)}>
-          <div className={ isEmpty(errors) ? "d-none" : "alert alert-danger" }>
+          <div className={ (isEmpty(errors) ? "d-none" : "alert alert-danger") }>
             {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
             {errors.password && <div><span className="help-block">{errors.password}</span></div>}
           </div>
