@@ -54,7 +54,7 @@ class Login extends React.Component {
           </div>
           <div className="form-group">
             <label className="control-label">Correo Electrónico</label>
-            <input onChange={this.updateInput.bind(this)} value={this.state.email} type="email" name="email" className="form-control" />
+            <input onChange={this.updateInput.bind(this)} value={this.state.email} type="text" name="email" className="form-control" />
           </div>
           <div className="form-group">
             <label className="control-label">Contraseña</label>
