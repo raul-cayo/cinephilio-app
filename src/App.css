@@ -40,6 +40,16 @@ form label {
   color: #F8F8F8;
 }
 
+.input-group-append button {
+  background-color: #F8F8F8;
+  color: #41514E;
+}
+
+.input-group-append button:hover {
+  background-color: #F8F8F8;
+  color: #000;
+}
+
 /***************************** Buttons ******************************/
 .cbt,
 .cbt-dk-green,
