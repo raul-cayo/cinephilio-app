@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 import Logo from '../../../images/LogoDark.png';
+import './Login.css';
 
 class Login extends React.Component {
   constructor(props){
