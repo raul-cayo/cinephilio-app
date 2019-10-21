@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
 
+import { loginValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png';
 
 class Login extends React.Component {
@@ -9,12 +11,23 @@ class Login extends React.Component {
     this.state = {
       email: '',
       password: '',
+      errors: {},
       isLoading: false
     };
   }
 
-  prevent(e) {
+  login(e) {
     e.preventDefault();
+    const { errors, isValid } = loginValidator(this.state);
+
+    if (isValid) {
+      this.setState({ errors: {}, isLoading: true });
+      // Send login request
+    } else {
+      this.setState({ errors: errors });
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
   }
 
   updateInput(e) {
@@ -32,7 +45,11 @@ class Login extends React.Component {
           <p className="my-auto text-box col-12 col-md-9 py-3">Ingresa con tu cuenta para darte las mejores recomendaciones.</p>
         </div>
 
-        <form className="text-center p-2 align-self-center" onSubmit={this.prevent}>
+        <form className="text-center p-2 align-self-center" onSubmit={this.login.bind(this)}>
+          <div className={ isEmpty(this.state.errors) ? "d-none" : "alert alert-danger" }>
+            {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
+            {errors.password && <div><span className="help-block">{errors.password}</span></div>}
+          </div>
           <div className="form-group">
             <label className="control-label">Correo Electrónico</label>
             <input onChange={this.updateInput.bind(this)} value={this.state.email} type="email" name="email" className="form-control" />
