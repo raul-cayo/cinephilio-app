@@ -39,7 +39,7 @@ class Login extends React.Component {
           </div>
           <div className="form-group">
             <label className="control-label">Contraseña</label>
-            <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" />
+            <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" data-toggle="password" />
           </div>
           <div className="form-group mt-5">
             <button className="btn cbt-blue btn-block" disabled={this.state.isLoading}>Iniciar Sesión</button>

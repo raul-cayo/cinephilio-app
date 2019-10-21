@@ -57,7 +57,7 @@ class Signup extends React.Component {
             <div className="form-group">
               <label className="control-label">Contraseña</label>
               <div className="input-group">
-                <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" />
+                <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" data-toggle="password" />
               </div>
             </div>
             <div className="form-group mt-5">
