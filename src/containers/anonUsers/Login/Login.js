@@ -35,11 +35,11 @@ class Login extends React.Component {
         <form className="text-center p-2 align-self-center" onSubmit={this.prevent}>
           <div className="form-group">
             <label className="control-label">Correo Electrónico</label>
-            <input onChange={this.updateInput} value={this.state.email} type="email" name="email" className="form-control" />
+            <input onChange={this.updateInput.bind(this)} value={this.state.email} type="email" name="email" className="form-control" />
           </div>
           <div className="form-group">
             <label className="control-label">Contraseña</label>
-            <input onChange={this.updateInput} value={this.state.password} type="password" name="password" className="form-control" />
+            <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" />
           </div>
           <div className="form-group mt-5">
             <button className="btn cbt-blue btn-block" disabled={this.state.isLoading}>Iniciar Sesión</button>

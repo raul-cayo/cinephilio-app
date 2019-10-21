@@ -38,26 +38,26 @@ class Signup extends React.Component {
             </p>
           </div>
 
-          <form onSubmit={this.prevent} className="text-center p-2 align-self-center">
+          <form onSubmit={this.prevent.bind(this)} className="text-center p-2 align-self-center">
             <div className="form-group">
               <label className="control-label">Nombre de Usuario</label>
-              <input onChange={this.updateInput} value={this.state.username} type="text" name="username" className="form-control" />
+              <input onChange={this.updateInput.bind(this)} value={this.state.username} type="text" name="username" className="form-control" />
             </div>
 
             <div className="form-group">
               <label className="control-label">Correo Electrónico</label>
-              <input onChange={this.updateInput} value={this.state.email} type="text" name="email" className="form-control" />
+              <input onChange={this.updateInput.bind(this)} value={this.state.email} type="text" name="email" className="form-control" />
             </div>
 
             <div className="form-group">
               <label className="control-label">Fecha de Nacimiento</label>
-              <input onChange={this.updateInput} className="form-control" value={this.state.birthdate} type="date" name="birthdate"></input>
+              <input onChange={this.updateInput.bind(this)} className="form-control" value={this.state.birthdate} type="date" name="birthdate"></input>
             </div>
 
             <div className="form-group">
               <label className="control-label">Contraseña</label>
               <div className="input-group">
-                <input onChange={this.updateInput} value={this.state.password} type="password" name="password" className="form-control" />
+                <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" />
               </div>
             </div>
             <div className="form-group mt-5">
