@@ -16,7 +16,7 @@ class Login extends React.Component {
     };
   }
 
-  login(e) {
+  loginUser(e) {
     e.preventDefault();
     const { errors, isValid } = loginValidator(this.state);
 
@@ -47,8 +47,8 @@ class Login extends React.Component {
           <p className="my-auto text-box col-12 col-md-9 py-3">Ingresa con tu cuenta para darte las mejores recomendaciones.</p>
         </div>
 
-        <form className="text-center p-2 align-self-center" onSubmit={this.login.bind(this)}>
-          <div className={ (isEmpty(errors) ? "d-none" : "alert alert-danger") }>
+        <form className="text-center p-2 align-self-center" onSubmit={this.loginUser.bind(this)}>
+          <div className={(isEmpty(errors) ? "d-none" : "alert alert-danger")}>
             {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
             {errors.password && <div><span className="help-block">{errors.password}</span></div>}
           </div>

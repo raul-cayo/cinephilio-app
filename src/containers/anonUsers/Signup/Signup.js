@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import isEmpty from 'lodash/isEmpty';
 
+import { signupValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png'
 
 class Signup extends React.Component {
@@ -11,7 +13,22 @@ class Signup extends React.Component {
       email: '',
       birthdate: '',
       password: '',
-      passShow: false
+      errors: {},
+      isLoading: false
+    }
+  }
+
+  registerUser(e) {
+    e.preventDefault();
+    const { errors, isValid } = signupValidator(this.state);
+
+    if (isValid) {
+      this.setState({ errors: {}, isLoading: true });
+      // Register user request
+    } else {
+      this.setState({ errors: errors });
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     }
   }
 
@@ -19,11 +36,9 @@ class Signup extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
-  prevent(e) {
-    e.preventDefault();
-  }
-
   render() {
+    const errors = this.state.errors;
+
     return (
       <div className="container">
         <div className="col-lg-8 offset-lg-2">
@@ -38,7 +53,14 @@ class Signup extends React.Component {
             </p>
           </div>
 
-          <form onSubmit={this.prevent.bind(this)} className="text-center p-2 align-self-center">
+          <form onSubmit={this.registerUser.bind(this)} className="text-center p-2 align-self-center">
+            <div className={(isEmpty(errors) ? "d-none" : "alert alert-danger")}>
+              {errors.username && <div><span className="help-block">{errors.username}</span><br /></div>}
+              {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
+              {errors.birthdate && <div><span className="help-block">{errors.birthdate}</span><br /></div>}
+              {errors.password && <div><span className="help-block">{errors.password}</span></div>}
+            </div>
+
             <div className="form-group">
               <label className="control-label">Nombre de Usuario</label>
               <input onChange={this.updateInput.bind(this)} value={this.state.username} type="text" name="username" className="form-control" />
