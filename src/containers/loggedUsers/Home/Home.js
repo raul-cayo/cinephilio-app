@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../../../components/Navbar/Navbar';
 import Logo from '../../../images/LogoDark.png';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 
 class Home extends React.Component {
