@@ -10,6 +10,7 @@ import FrontPage from "./containers/anonUsers/FrontPage/FrontPage";
 import Login from "./containers/anonUsers/Login/Login";
 import Signup from "./containers/anonUsers/Signup/Signup";
 import Home from "./containers/loggedUsers/Home/Home";
+import Profile from "./containers/loggedUsers/Profile/Profile";
 import RequiresToken from "./components/RequiresToken/RequiresToken";
 import * as serviceWorker from './serviceWorker';
 
@@ -25,6 +26,7 @@ ReactDOM.render(
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/home"><RequiresToken><Home /></RequiresToken></Route>
+        <Route path="/profile"><RequiresToken><Profile /></RequiresToken></Route>
         <Route path='*' component={() => "404 NOT FOUND, no sé que ande buscando pero aquí no está. Justo como el amor de ella por ti."}/>
       </Switch>
     </App>
