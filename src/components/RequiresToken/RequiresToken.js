@@ -41,6 +41,7 @@ class RequiresToken extends React.Component {
       return <div>{this.props.children}</div>;
     }
     this.props.history.push("/login");
+    return null;
   }
 }
 

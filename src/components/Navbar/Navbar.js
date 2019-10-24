@@ -24,7 +24,7 @@ class Navbar extends React.Component {
   }
 
   logoutUser() {
-    this.logoutRequest();
+    // this.logoutRequest();
     window.localStorage.setItem('access_token', 'notoken');
     window.localStorage.setItem('refresh_token', 'notoken');
     window.localStorage.setItem('username', 'nousername');
