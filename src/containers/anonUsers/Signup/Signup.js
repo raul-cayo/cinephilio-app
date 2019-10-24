@@ -19,7 +19,31 @@ class Signup extends React.Component {
     }
   }
 
-  registerRequest() {
+  _loginRequest() {
+    let data = {
+      username: this.state.username,
+      email: this.state.email
+    }
+
+    axios.post('https://cinephilio-api.herokuapp.com/login',
+      JSON.stringify(data),
+      { headers: {'Content-Type': 'application/json' }}
+    )
+    .then((res) => {
+      if (res.status == 200) {
+        // save credentials to localstorage
+        console.log(res.data);
+        //this.props.history.push("/home");
+      } else {
+        console.log("Error _loginRequest status: " + res.status);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  _registerRequest() {
     let data = {
       username: this.state.username,
       email: this.state.email,
@@ -33,9 +57,9 @@ class Signup extends React.Component {
     )
     .then((res) => {
       if (res.status == 201) {
-        this.props.history.push("/home");
+        this._loginRequest();
       } else {
-        console.log(res.status);
+        console.log("Error _registerRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -49,7 +73,7 @@ class Signup extends React.Component {
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      this.registerRequest();
+      this._registerRequest();
 
     } else {
       this.setState({ errors: errors });
