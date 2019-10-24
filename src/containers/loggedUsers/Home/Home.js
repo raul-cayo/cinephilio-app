@@ -10,9 +10,8 @@ class Home extends React.Component {
     let funfact = "Bruce Lee era tan rápido, que tenían que disminuir la velocidad en las películas para \
       que se notaran sus movimientos, en todas las demás películas de artes marciales aumentan la velocidad."
 
-    axios.get('https://cinephilio-api.herokuapp.com/fun-fact',
-      JSON.stringify(data),
-      { headers: {'Content-Type': 'application/json' }}
+    axios.get(
+      'https://cinephilio-api.herokuapp.com/fun-fact'
     )
     .then((res) => {
       if (res.status == 200) {
