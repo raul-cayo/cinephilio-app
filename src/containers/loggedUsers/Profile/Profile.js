@@ -24,14 +24,14 @@ class Profile extends React.Component {
       { headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
     )
     .then((res) => {
-      if (res.status === 201) {
+      if (res.status === 200) {
         this.setState({
           username: res.data.username,
           email: res.data.email,
           birthdate: res.data.birthdate
         });
       } else {
-        console.log("Error registerRequest status: " + res.status);
+        sole.log("Error updateUserRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -43,19 +43,19 @@ class Profile extends React.Component {
     let data = {
       username: this.state.username,
       email: this.state.email,
-      password: this.state.password,
+      // password: this.state.password
       birthdate: this.state.birthdate
     }
 
-    axios.post('https://cinephilio-api.herokuapp.com/user',
+    axios.put('https://cinephilio-api.herokuapp.com/user',
       JSON.stringify(data),
       { headers: {'Content-Type': 'application/json' }}
     )
     .then((res) => {
-      if (res.status === 201) {
-        this.loginRequest();
+      if (res.status === 200) {
+        console.log("Cambios guardados correctamente.");
       } else {
-        console.log("Error registerRequest status: " + res.status);
+        sole.log("Error updateUserRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -69,7 +69,7 @@ class Profile extends React.Component {
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      this.registerRequest();
+      this.updateUserRequest();
       this.setState({ isLoading: false });
 
     } else {
