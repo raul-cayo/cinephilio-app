@@ -10,7 +10,7 @@ class Navbar extends React.Component {
       <nav className="cphio-navbar navbar navbar-light">
         <div className="container-fluid">
 
-          <div className="navbar-header " data-toggle="collapse" data-target=".navbar-collapse.show">
+          <div className="navbar-header">
             <Link to="/home" className="titulo-navbar px-2">Cinephilio</Link>
           </div>
 
@@ -21,7 +21,7 @@ class Navbar extends React.Component {
           </button>
 
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul className="navbar-nav ml-auto">
+            <ul className="navbar-nav">
               <li className="nav-item text-center mb-1 mt-2">
                 <button className="nav-btn">Mi Cuenta</button>
               </li>
