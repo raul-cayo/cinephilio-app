@@ -59,6 +59,10 @@ class Profile extends React.Component {
     .then((res) => {
       if (res.status === 200) {
         console.log("Cambios guardados correctamente.");
+        document.querySelector('.alert-success').classList.remove('d-none');
+        setTimeout(() => {
+          document.querySelector('.alert-success').classList.add('d-none');
+        }, 3000);
       } else {
         console.log("Error updateUserRequest status: " + res.status);
       }
@@ -113,6 +117,9 @@ class Profile extends React.Component {
                 {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
                 {errors.birthdate && <div><span className="help-block">{errors.birthdate}</span><br /></div>}
                 {errors.password && <div><span className="help-block">{errors.password}</span></div>}
+              </div>
+              <div className={"alert alert-success d-none ")}>
+                Cambios guardados exitosamente.
               </div>
 
               <div className="form-group">
