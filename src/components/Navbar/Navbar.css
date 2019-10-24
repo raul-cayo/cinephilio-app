@@ -23,7 +23,10 @@
 }
 
 .nav-btn {
+  display: block;
+  text-decoration: none;
   width: 100%;
+  color: #000;
   border-radius: 2.5rem;
   background-color: #31E3CB;
   border: 1px solid #41514E;
