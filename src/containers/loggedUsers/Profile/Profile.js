@@ -31,7 +31,7 @@ class Profile extends React.Component {
           birthdate: res.data.birthdate
         });
       } else {
-        sole.log("Error updateUserRequest status: " + res.status);
+        console.log("Error updateUserRequest status: " + res.status);
       }
     })
     .catch((err) => {
