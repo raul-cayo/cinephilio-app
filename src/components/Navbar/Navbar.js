@@ -11,7 +11,6 @@ class Navbar extends React.Component {
         <Link to="/home" className="titulo-navbar px-2">Cinephilio</Link>
 
         <p className="my-auto ml-auto mr-3 d-none d-sm-block">{this.props.username}</p>
-
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
           <span className="navbar-toggler-icon"></span>
         </button>

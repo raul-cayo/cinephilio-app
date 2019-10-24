@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
+import axios from 'axios';
 
 import { signupValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png'
@@ -17,6 +18,37 @@ class Signup extends React.Component {
       isLoading: false
     }
   }
+  /////////////
+
+  async addUser(data){
+    let dataAPI = JSON.stringify(data);
+    return axios.post('https://cinephilio-api.herokuapp.com/user', dataAPI, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    }); 
+  }
+
+  //////////////
+  registerRequest() {
+    let data = {
+      username: this.state.username,
+      email: this.state.email,
+      password: this.state.password,
+      birthdate: this.state.birthdate
+    }
+
+    axios.post('https://cinephilio-api.herokuapp.com/user',
+      JSON.stringify(data),
+      { headers: {'Content-Type': 'application/json' }}
+    )
+    .then(function (res){
+      console.log(res);
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+  }
 
   registerUser(e) {
     e.preventDefault();
@@ -24,7 +56,8 @@ class Signup extends React.Component {
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      // Register user request
+      this.registerRequest();
+
     } else {
       this.setState({ errors: errors });
       document.body.scrollTop = 0;
