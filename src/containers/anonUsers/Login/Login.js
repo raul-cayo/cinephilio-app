@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
+import axios from 'axios';
 
 import { loginValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png';
@@ -37,7 +38,7 @@ class Login extends React.Component {
       }
     })
     .catch((err) => {
-      this.setState({ errors: { credentials: "Correo o contraseña incorrecta"} });
+      this.setState({ errors: { credentials: "Correo o contraseña incorrectos"} });
       console.log(err);
     });
   }
@@ -97,4 +98,4 @@ class Login extends React.Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);
