@@ -8,7 +8,6 @@ class Navbar extends React.Component {
   render() {
     return (
       <nav className="cphio-navbar navbar navbar-light">
-
         <Link to="/home" className="titulo-navbar px-2">Cinephilio</Link>
 
         <p className="my-auto ml-auto mr-3 d-none d-sm-block">{this.props.username}</p>
