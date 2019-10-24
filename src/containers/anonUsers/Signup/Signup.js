@@ -21,8 +21,8 @@ class Signup extends React.Component {
 
   _loginRequest() {
     let data = {
-      username: this.state.username,
-      email: this.state.email
+      email: this.state.email,
+      password: this.state.password
     }
 
     axios.post('https://cinephilio-api.herokuapp.com/login',
@@ -33,7 +33,10 @@ class Signup extends React.Component {
       if (res.status == 200) {
         // save credentials to localstorage
         console.log(res.data);
-        //this.props.history.push("/home");
+        // window.localStorage.setItem('access_token', res.data.access_token);
+        // window.localStorage.setItem('refresh_token', res.data.refresh_token);
+        // window.localStorage.setItem('access_token', this.state.username);
+        // this.props.history.push("/home");
       } else {
         console.log("Error _loginRequest status: " + res.status);
       }
