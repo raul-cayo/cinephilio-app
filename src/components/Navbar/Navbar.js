@@ -5,6 +5,8 @@ import axios from 'axios';
 import './Navbar.css';
 
 class Navbar extends React.Component {
+
+  // Is currently NOT working due to 401 error
   logoutRequest() {
     console.log("logout request token: " + window.localStorage.getItem('access_token'));
     axios.post('https://cinephilio-api.herokuapp.com/logout',
@@ -14,7 +16,7 @@ class Navbar extends React.Component {
       if (res.status === 200) {
         console.log("Successfully logged out");
       } else {
-        console.log("Error _registerRequest status: " + res.status);
+        console.log("Error logoutRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -24,7 +26,10 @@ class Navbar extends React.Component {
 
   logoutUser(e) {
     e.preventDefaulf();
-    this.logoutRequest();
+    // this.logoutRequest();
+    window.localStorage.setItem('access_token', 'notoken');
+    window.localStorage.setItem('refresh_token', 'notoken');
+    window.localStorage.setItem('username', 'nousername');
     this.props.history.push("/login");
   }
 
