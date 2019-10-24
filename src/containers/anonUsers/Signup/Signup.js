@@ -73,7 +73,7 @@ class Signup extends React.Component {
 
             <div className="form-group">
               <label className="control-label">Fecha de Nacimiento</label>
-              <input onChange={this.updateInput.bind(this)} className="form-control" value={this.state.birthdate} type="date" name="birthdate"></input>
+              <input onChange={this.updateInput.bind(this)} className="date form-control" value={this.state.birthdate} type="date" name="birthdate"></input>
             </div>
 
             <div className="form-group">
