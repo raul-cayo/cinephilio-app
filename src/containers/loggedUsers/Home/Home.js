@@ -14,6 +14,8 @@ class Home extends React.Component {
       'https://cinephilio-api.herokuapp.com/fun-fact'
     )
     .then((res) => {
+      console.log(res.status);
+      console.log(res.data.text);
       if (res.status == 200) {
         return res.data.text;
       } else {
