@@ -18,18 +18,7 @@ class Signup extends React.Component {
       isLoading: false
     }
   }
-  /////////////
 
-  async addUser(data){
-    let dataAPI = JSON.stringify(data);
-    return axios.post('https://cinephilio-api.herokuapp.com/user', dataAPI, {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    }); 
-  }
-
-  //////////////
   registerRequest() {
     let data = {
       username: this.state.username,
@@ -42,14 +31,14 @@ class Signup extends React.Component {
       JSON.stringify(data),
       { headers: {'Content-Type': 'application/json' }}
     )
-    .then(function (res){
+    .then((res) => {
       if (res.status == 201) {
         this.props.history.push("/home");
       } else {
         console.log(res.status);
       }
     })
-    .catch(function (err) {
+    .catch((err) => {
       console.log(err);
     });
   }
