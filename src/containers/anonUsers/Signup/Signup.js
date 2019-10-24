@@ -31,12 +31,11 @@ class Signup extends React.Component {
     )
     .then((res) => {
       if (res.status == 200) {
-        // save credentials to localstorage
         console.log(res.data);
-        // window.localStorage.setItem('access_token', res.data.access_token);
-        // window.localStorage.setItem('refresh_token', res.data.refresh_token);
-        // window.localStorage.setItem('access_token', this.state.username);
-        // this.props.history.push("/home");
+        window.localStorage.setItem('access_token', res.data.access_token);
+        window.localStorage.setItem('refresh_token', res.data.refresh_token);
+        window.localStorage.setItem('username', this.state.username);
+        this.props.history.push("/home");
       } else {
         console.log("Error _loginRequest status: " + res.status);
       }
