@@ -78,6 +78,7 @@ class Login extends React.Component {
           <div className={(isEmpty(errors) ? "d-none" : "alert alert-danger")}>
             {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
             {errors.password && <div><span className="help-block">{errors.password}</span></div>}
+            {errors.credentials && <div><span className="help-block">{errors.credentials}</span></div>}
           </div>
           <div className="form-group">
             <label className="control-label">Correo Electrónico</label>
