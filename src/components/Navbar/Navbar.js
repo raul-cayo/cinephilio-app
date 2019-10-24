@@ -7,7 +7,6 @@ import './Navbar.css';
 class Navbar extends React.Component {
 
   async logoutRequest() {
-    console.log("logout request token: " + window.localStorage.getItem('access_token'));
     axios.post('https://cinephilio-api.herokuapp.com/logout',
       { headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
     )
