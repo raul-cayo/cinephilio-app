@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import axios from 'axios';
 
-import { signupValidator } from '../../../utils/validator';
+import { updateValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png'
 
 class Profile extends React.Component {
@@ -65,7 +64,7 @@ class Profile extends React.Component {
 
   updateUser(e) {
     e.preventDefault();
-    const { errors, isValid } = signupValidator(this.state);
+    const { errors, isValid } = updateValidator(this.state);
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
@@ -92,50 +91,53 @@ class Profile extends React.Component {
     const errors = this.state.errors;
 
     return (
-      <div className="container">
-        <div className="row mt-3 px-4">
-            <div className="col-12 col-md-3">
-              <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
-            </div>
-            <p className="my-auto text-box-white col-12 col-md-9 py-3">Aqui puedes cambiar tu informacion.</p>
-          </div>
-
-          <form onSubmit={this.updateUser.bind(this)} className="text-center p-2 align-self-center">
-            <div className={(isEmpty(errors) ? "d-none" : "alert alert-danger")}>
-              {errors.username && <div><span className="help-block">{errors.username}</span><br /></div>}
-              {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
-              {errors.birthdate && <div><span className="help-block">{errors.birthdate}</span><br /></div>}
-              {errors.password && <div><span className="help-block">{errors.password}</span></div>}
-            </div>
-
-            <div className="form-group">
-              <label className="control-label">Nombre de Usuario</label>
-              <input onChange={this.updateInput.bind(this)} value={this.state.username} type="text" name="username" className="form-control" />
-            </div>
-
-            <div className="form-group">
-              <label className="control-label">Correo Electrónico</label>
-              <input onChange={this.updateInput.bind(this)} value={this.state.email} type="text" name="email" className="form-control" />
-            </div>
-
-            <div className="form-group">
-              <label className="control-label">Fecha de Nacimiento</label>
-              <input onChange={this.updateInput.bind(this)} className="date form-control" value={this.state.birthdate} type="date" name="birthdate"></input>
-            </div>
-
-            <div className="form-group">
-              <label className="control-label">Nueva Contraseña</label>
-              <div className="input-group">
-                <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" data-toggle="password" />
+      <div>
+        <Navbar username={"User Name"} />
+        <div className="container">
+          <div className="row mt-3 px-4">
+              <div className="col-12 col-md-3">
+                <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
               </div>
+              <p className="my-auto text-box-white col-12 col-md-9 py-3">Aqui puedes cambiar tu informacion.</p>
             </div>
-            <div className="form-group mt-5">
-              <button className="btn cbt-blue btn-block">Guardar Cambios</button>
-            </div>
-          </form>
+
+            <form onSubmit={this.updateUser.bind(this)} className="text-center p-2 align-self-center">
+              <div className={(isEmpty(errors) ? "d-none" : "alert alert-danger")}>
+                {errors.username && <div><span className="help-block">{errors.username}</span><br /></div>}
+                {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
+                {errors.birthdate && <div><span className="help-block">{errors.birthdate}</span><br /></div>}
+                {errors.password && <div><span className="help-block">{errors.password}</span></div>}
+              </div>
+
+              <div className="form-group">
+                <label className="control-label">Nombre de Usuario</label>
+                <input onChange={this.updateInput.bind(this)} value={this.state.username} type="text" name="username" className="form-control" />
+              </div>
+
+              <div className="form-group">
+                <label className="control-label">Correo Electrónico</label>
+                <input onChange={this.updateInput.bind(this)} value={this.state.email} type="text" name="email" className="form-control" />
+              </div>
+
+              <div className="form-group">
+                <label className="control-label">Fecha de Nacimiento</label>
+                <input onChange={this.updateInput.bind(this)} className="date form-control" value={this.state.birthdate} type="date" name="birthdate"></input>
+              </div>
+
+              <div className="form-group">
+                <label className="control-label">Nueva Contraseña</label>
+                <div className="input-group">
+                  <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" data-toggle="password" />
+                </div>
+              </div>
+              <div className="form-group mt-5">
+                <button className="btn cbt-blue btn-block">Guardar Cambios</button>
+              </div>
+            </form>
+        </div>
       </div>
     )
   }
 }
 
-export default withRouter(Profile);
+export default Profile;
