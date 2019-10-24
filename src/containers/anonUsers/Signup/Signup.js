@@ -30,7 +30,7 @@ class Signup extends React.Component {
       { headers: {'Content-Type': 'application/json' }}
     )
     .then((res) => {
-      if (res.status == 200) {
+      if (res.status === 200) {
         window.localStorage.setItem('access_token', res.data.access_token);
         window.localStorage.setItem('refresh_token', res.data.refresh_token);
         window.localStorage.setItem('username', res.data.username);

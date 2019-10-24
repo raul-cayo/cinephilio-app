@@ -9,8 +9,9 @@ class Home extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      funfact: "Bruce Lee era tan rápido, que tenían que disminuir la velocidad en las películas para \
-      que se notaran sus movimientos, en todas las demás películas de artes marciales aumentan la velocidad."
+      funfact: "Bruce Lee era tan rápido, que tenían que disminuir la velocidad"
+      + " en las películas para que se notaran sus movimientos, en todas las"
+      + " demás películas de artes marciales aumentan la velocidad."
     }
   }
 
@@ -19,9 +20,7 @@ class Home extends React.Component {
       'https://cinephilio-api.herokuapp.com/fun-fact'
     )
     .then((res) => {
-      console.log(res.status);
-      console.log(res.data.text);
-      if (res.status == 200) {
+      if (res.status === 200) {
         this.setState({funfact: res.data.text});
       } else {
         console.log("Error _getFunfact status: " + res.status);
