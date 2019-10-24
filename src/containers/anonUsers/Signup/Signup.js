@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import isEmpty from 'lodash/isEmpty';
 import axios from 'axios';
 
@@ -43,7 +43,11 @@ class Signup extends React.Component {
       { headers: {'Content-Type': 'application/json' }}
     )
     .then(function (res){
-      console.log(res);
+      if (res.data == 201) {
+        this.props.history.push("/home");
+      } else {
+        console.log(res.data);
+      }
     })
     .catch(function (err) {
       console.log(err);
@@ -127,4 +131,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);
