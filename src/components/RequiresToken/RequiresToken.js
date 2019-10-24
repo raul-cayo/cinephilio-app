@@ -3,7 +3,6 @@ import axios from 'axios';
 
 class RequiresToken extends React.Component {
   _isValidTokenRequest() {
-
     axios.post('https://cinephilio-api.herokuapp.com/user',
       { headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
     )

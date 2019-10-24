@@ -6,32 +6,37 @@ import axios from 'axios';
 
 
 class Home extends React.Component {
-  _getFunfact() {
-    const funfact = "Bruce Lee era tan rápido, que tenían que disminuir la velocidad en las películas para \
+  constructor(props) {
+    super(props)
+    this.state = {
+      funfact: "Bruce Lee era tan rápido, que tenían que disminuir la velocidad en las películas para \
       que se notaran sus movimientos, en todas las demás películas de artes marciales aumentan la velocidad."
+    }
+  }
 
-    return axios.get(
+  _getFunfact() {
+    axios.get(
       'https://cinephilio-api.herokuapp.com/fun-fact'
     )
     .then((res) => {
       console.log(res.status);
       console.log(res.data.text);
       if (res.status == 200) {
-        return res.data.text;
+        this.setState({funfact: res.data.text});
       } else {
         console.log("Error _getFunfact status: " + res.status);
-        return funfact;
       }
     })
     .catch((err) => {
       console.log(err);
-      return funfact;
     });
   }
 
-  render() {
-    const funfact = this._getFunfact();
+  componentDidMount () {
+    this._getFunfact();
+  }
 
+  render() {
     return (
       <div>
         <Navbar username={"User Name"} />
@@ -40,7 +45,7 @@ class Home extends React.Component {
             <div className="col-12 col-md-3">
               <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
             </div>
-            <p className="my-auto text-box-white col-12 col-md-9 py-3">{funfact}</p>
+            <p className="my-auto text-box-white col-12 col-md-9 py-3">{this.state.funfact}</p>
           </div>
 
           <div className="row">
