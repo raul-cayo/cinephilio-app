@@ -55,7 +55,7 @@ class Profile extends React.Component {
       if (res.status === 200) {
         console.log("Cambios guardados correctamente.");
       } else {
-        sole.log("Error updateUserRequest status: " + res.status);
+        console.log("Error updateUserRequest status: " + res.status);
       }
     })
     .catch((err) => {
