@@ -43,10 +43,10 @@ class Signup extends React.Component {
       { headers: {'Content-Type': 'application/json' }}
     )
     .then(function (res){
-      if (res.data == 201) {
+      if (res.status == 201) {
         this.props.history.push("/home");
       } else {
-        console.log(res.data);
+        console.log(res.status);
       }
     })
     .catch(function (err) {
