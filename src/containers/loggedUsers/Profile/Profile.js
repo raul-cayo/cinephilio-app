@@ -43,7 +43,7 @@ class Profile extends React.Component {
     let data = {
       username: this.state.username,
       email: this.state.email,
-      // password: this.state.password
+      password: "adminroot",
       birthdate: this.state.birthdate
     }
 
