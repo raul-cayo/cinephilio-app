@@ -31,7 +31,7 @@ class Login extends React.Component {
       if (res.status == 200) {
         window.localStorage.setItem('access_token', res.data.access_token);
         window.localStorage.setItem('refresh_token', res.data.refresh_token);
-        window.localStorage.setItem('username', "Hardcoded Name");
+        window.localStorage.setItem('username', res.data.username);
         this.props.history.push("/home");
       } else {
         console.log("Error _loginRequest status: " + res.status);
