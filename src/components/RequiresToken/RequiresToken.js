@@ -11,7 +11,7 @@ class RequiresToken extends React.Component {
     }
   }
 
-  _isTokenValidRequest() {
+  isTokenValidRequest() {
     axios.get('https://cinephilio-api.herokuapp.com/refresh',
       { headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
     )
@@ -30,7 +30,7 @@ class RequiresToken extends React.Component {
   }
 
   componentDidMount () {
-    this._isTokenValidRequest();
+    this.isTokenValidRequest();
   }
 
   render() {

@@ -17,7 +17,7 @@ class Login extends React.Component {
     };
   }
 
-  _loginRequest() {
+  loginRequest() {
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -34,7 +34,7 @@ class Login extends React.Component {
         window.localStorage.setItem('username', res.data.username);
         this.props.history.push("/home");
       } else {
-        console.log("Error _loginRequest status: " + res.status);
+        console.log("Error loginRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -49,7 +49,7 @@ class Login extends React.Component {
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      this._loginRequest();
+      this.loginRequest();
       this.setState({ isLoading: false });
     } else {
       this.setState({ errors: errors });

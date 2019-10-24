@@ -1,9 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import './Navbar.css';
 
 class Navbar extends React.Component {
+  logoutRequest() {
+    axios.post('https://cinephilio-api.herokuapp.com/logout',
+      { headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
+    )
+    .then((res) => {
+      if (res.status === 200) {
+        console.log("Successfully logged out");
+      } else {
+        console.log("Error _registerRequest status: " + res.status);
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+  }
+
+  logoutUser(e) {
+    e.preventDefaulf();
+    this.logoutRequest();
+    this.props.history.push("/login");
+  }
 
   render() {
     return (
@@ -18,10 +39,10 @@ class Navbar extends React.Component {
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
           <ul className="navbar-nav">
             <li className="nav-item text-center mb-1 mt-2">
-              <button className="nav-btn">Mi Cuenta</button>
+              <Link to="/home" className="nav-btn">Mi Cuenta</Link>
             </li>
             <li className="nav-item text-center">
-              <button className="nav-btn">Cerrar Sesión</button>
+              <button className="nav-btn" onClick={this.logoutRequest.bind(this)}>Cerrar Sesión</button>
             </li>
           </ul>
         </div>
@@ -30,4 +51,4 @@ class Navbar extends React.Component {
   }
 };
 
-export default Navbar;
+export default withRouter(Navbar);

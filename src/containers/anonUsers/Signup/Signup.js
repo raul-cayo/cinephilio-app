@@ -19,7 +19,7 @@ class Signup extends React.Component {
     }
   }
 
-  _loginRequest() {
+  loginRequest() {
     let data = {
       email: this.state.email,
       password: this.state.password
@@ -36,7 +36,7 @@ class Signup extends React.Component {
         window.localStorage.setItem('username', res.data.username);
         this.props.history.push("/home");
       } else {
-        console.log("Error _loginRequest status: " + res.status);
+        console.log("Error loginRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -44,7 +44,7 @@ class Signup extends React.Component {
     });
   }
 
-  _registerRequest() {
+  registerRequest() {
     let data = {
       username: this.state.username,
       email: this.state.email,
@@ -58,9 +58,9 @@ class Signup extends React.Component {
     )
     .then((res) => {
       if (res.status === 201) {
-        this._loginRequest();
+        this.loginRequest();
       } else {
-        console.log("Error _registerRequest status: " + res.status);
+        console.log("Error registerRequest status: " + res.status);
       }
     })
     .catch((err) => {
@@ -74,7 +74,7 @@ class Signup extends React.Component {
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      this._registerRequest();
+      this.registerRequest();
       this.setState({ isLoading: false });
 
     } else {

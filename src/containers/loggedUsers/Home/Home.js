@@ -15,7 +15,7 @@ class Home extends React.Component {
     }
   }
 
-  _getFunfact() {
+  getFunfact() {
     axios.get(
       'https://cinephilio-api.herokuapp.com/fun-fact'
     )
@@ -23,7 +23,7 @@ class Home extends React.Component {
       if (res.status === 200) {
         this.setState({funfact: res.data.text});
       } else {
-        console.log("Error _getFunfact status: " + res.status);
+        console.log("Error getFunfact status: " + res.status);
       }
     })
     .catch((err) => {
@@ -32,7 +32,7 @@ class Home extends React.Component {
   }
 
   componentDidMount () {
-    this._getFunfact();
+    this.getFunfact();
   }
 
   render() {
