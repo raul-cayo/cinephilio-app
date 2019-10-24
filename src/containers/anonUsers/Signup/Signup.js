@@ -57,7 +57,7 @@ class Signup extends React.Component {
       { headers: {'Content-Type': 'application/json' }}
     )
     .then((res) => {
-      if (res.status == 201) {
+      if (res.status === 201) {
         this._loginRequest();
       } else {
         console.log("Error _registerRequest status: " + res.status);

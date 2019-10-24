@@ -10,6 +10,7 @@ import FrontPage from "./containers/anonUsers/FrontPage/FrontPage";
 import Login from "./containers/anonUsers/Login/Login";
 import Signup from "./containers/anonUsers/Signup/Signup";
 import Home from "./containers/loggedUsers/Home/Home";
+import RequiresToken from "./components/RequiresToken/RequiresToken";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -23,7 +24,7 @@ ReactDOM.render(
         <Route path="/anonRecomm" component={AnonRecommendation} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/home" component={Home} />
+        <Route path="/home"><RequiresToken><Home /></RequiresToken></Route>
         <Route path='*' component={() => "404 NOT FOUND, no sé que ande buscando pero aquí no está. Justo como el amor de ella por ti."}/>
       </Switch>
     </App>
