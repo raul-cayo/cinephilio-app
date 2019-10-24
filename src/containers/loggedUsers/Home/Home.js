@@ -7,24 +7,24 @@ import axios from 'axios';
 
 class Home extends React.Component {
   _getFunfact() {
-    let funfact = "Bruce Lee era tan rápido, que tenían que disminuir la velocidad en las películas para \
+    const funfact = "Bruce Lee era tan rápido, que tenían que disminuir la velocidad en las películas para \
       que se notaran sus movimientos, en todas las demás películas de artes marciales aumentan la velocidad."
 
-    axios.get(
+    return axios.get(
       'https://cinephilio-api.herokuapp.com/fun-fact'
     )
     .then((res) => {
       if (res.status == 200) {
-        funfact = res.data.text;
+        return res.data.text;
       } else {
         console.log("Error _getFunfact status: " + res.status);
+        return funfact;
       }
     })
     .catch((err) => {
       console.log(err);
+      return funfact;
     });
-
-    return funfact;
   }
 
   render() {
