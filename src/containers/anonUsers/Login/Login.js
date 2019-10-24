@@ -16,13 +16,39 @@ class Login extends React.Component {
     };
   }
 
+  _loginRequest() {
+    let data = {
+      email: this.state.email,
+      password: this.state.password
+    }
+
+    axios.post('https://cinephilio-api.herokuapp.com/login',
+      JSON.stringify(data),
+      { headers: {'Content-Type': 'application/json' }}
+    )
+    .then((res) => {
+      if (res.status == 200) {
+        window.localStorage.setItem('access_token', res.data.access_token);
+        window.localStorage.setItem('refresh_token', res.data.refresh_token);
+        window.localStorage.setItem('username', "Hardcoded Name");
+        this.props.history.push("/home");
+      } else {
+        console.log("Error _loginRequest status: " + res.status);
+      }
+    })
+    .catch((err) => {
+      this.setState({ errors: { credentials: "Correo o contraseña incorrecta"} });
+      console.log(err);
+    });
+  }
+
   loginUser(e) {
     e.preventDefault();
     const { errors, isValid } = loginValidator(this.state);
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      // Send login request
+      this._loginRequest();
     } else {
       this.setState({ errors: errors });
       document.body.scrollTop = 0;

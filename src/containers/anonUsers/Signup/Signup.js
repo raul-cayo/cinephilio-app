@@ -31,7 +31,6 @@ class Signup extends React.Component {
     )
     .then((res) => {
       if (res.status == 200) {
-        console.log(res.data);
         window.localStorage.setItem('access_token', res.data.access_token);
         window.localStorage.setItem('refresh_token', res.data.refresh_token);
         window.localStorage.setItem('username', this.state.username);
