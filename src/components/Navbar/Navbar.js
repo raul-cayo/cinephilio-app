@@ -26,7 +26,7 @@ class Navbar extends React.Component {
 
   logoutUser(e) {
     e.preventDefaulf();
-    // this.logoutRequest();
+    this.logoutRequest();
     window.localStorage.setItem('access_token', 'notoken');
     window.localStorage.setItem('refresh_token', 'notoken');
     window.localStorage.setItem('username', 'nousername');
@@ -49,7 +49,7 @@ class Navbar extends React.Component {
               <Link to="/home" className="nav-btn">Mi Cuenta</Link>
             </li>
             <li className="nav-item text-center">
-              <button className="nav-btn" onClick={this.logoutRequest.bind(this)}>Cerrar Sesión</button>
+              <button className="nav-btn" onClick={this.logoutUser.bind(this)}>Cerrar Sesión</button>
             </li>
           </ul>
         </div>
