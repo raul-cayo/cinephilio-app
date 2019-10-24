@@ -58,7 +58,6 @@ class Profile extends React.Component {
     )
     .then((res) => {
       if (res.status === 200) {
-        console.log("Cambios guardados correctamente.");
         document.querySelector('.alert-success').classList.remove('d-none');
         setTimeout(() => {
           document.querySelector('.alert-success').classList.add('d-none');
@@ -118,7 +117,7 @@ class Profile extends React.Component {
                 {errors.birthdate && <div><span className="help-block">{errors.birthdate}</span><br /></div>}
                 {errors.password && <div><span className="help-block">{errors.password}</span></div>}
               </div>
-              <div className={"alert alert-success d-none ")}>
+              <div className={"alert alert-success d-none "}>
                 Cambios guardados exitosamente.
               </div>
 
