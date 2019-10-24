@@ -12,7 +12,7 @@ export default class Home extends React.Component {
                 <div className="container">
                     <div className="row mt-3 px-4">
                         <div className="col-12 col-md-3">
-                            <img className="logo-2nd rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio"/>
+                            <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio"/>
                         </div>
                         <p className="my-auto text-box-white col-12 col-md-9 py-3">Bruce Lee era tan rápido, que 
                         tenían que disminuir la velocidad en las películas para que se notaran sus movimientos, 

@@ -36,6 +36,11 @@ p {
   color: #000;
 }
 
+.text-box-white {
+  background-color: #F8F8F8;
+  border-radius: 0.2rem;  
+}
+
 form label {
   color: #F8F8F8;
 }
