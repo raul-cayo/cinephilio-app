@@ -49,7 +49,12 @@ class Profile extends React.Component {
 
     axios.put('https://cinephilio-api.herokuapp.com/user',
       JSON.stringify(data),
-      { headers: {'Content-Type': 'application/json' }}
+      { headers: 
+        {
+          'Content-Type': 'application/json', 
+          'Authorization': 'Bearer ' + window.localStorage.getItem('access_token')
+        }
+      }
     )
     .then((res) => {
       if (res.status === 200) {
