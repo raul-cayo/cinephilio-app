@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PicError from '../../../images/error.jpg';
+import PicError from '../../images/error.jpg';
 
 function NotFound(props) {
   return (
