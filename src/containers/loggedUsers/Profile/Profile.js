@@ -3,7 +3,8 @@ import isEmpty from 'lodash/isEmpty';
 import axios from 'axios';
 
 import { updateValidator } from '../../../utils/validator';
-import Logo from '../../../images/LogoDark.png'
+import Logo from '../../../images/LogoDark.png';
+import Navbar from '../../../components/Navbar/Navbar';
 
 class Profile extends React.Component {
   constructor(props) {
