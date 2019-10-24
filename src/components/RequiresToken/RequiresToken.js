@@ -29,10 +29,6 @@ class RequiresToken extends React.Component {
     });
   }
 
-  redirect() {
-    this.props.history.push("/login");
-  }
-
   componentDidMount () {
     this.isTokenValidRequest();
   }
@@ -44,7 +40,7 @@ class RequiresToken extends React.Component {
     if (this.state.isTokenValid) {
       return <div>{this.props.children}</div>;
     }
-    this.redirect();
+    this.props.history.push("/login");
     return null;
   }
 }
