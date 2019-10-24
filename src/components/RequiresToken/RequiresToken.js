@@ -44,4 +44,4 @@ class RequiresToken extends React.Component {
   }
 }
 
-export default RequiresToken;
+export default withRouter(RequiresToken);
