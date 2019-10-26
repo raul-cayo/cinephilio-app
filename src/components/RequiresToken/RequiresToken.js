@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
 
 class RequiresToken extends React.Component {
   constructor(props) {
@@ -13,23 +12,23 @@ class RequiresToken extends React.Component {
 
   isTokenValidRequest() {
     axios.get('https://cinephilio-api.herokuapp.com/refresh',
-      { headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
+      { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') } }
     )
-    .then((res) => {
-      if (res.status === 200) {
-        this.setState({isTokenValid: true, isLoading: false});
-      } else {
-        console.log("Error _registerRequest status: " + res.status);
-        this.setState({isLoading: false});
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-      this.setState({isLoading: false});
-    });
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({ isTokenValid: true, isLoading: false });
+        } else {
+          console.log("Error _registerRequest status: " + res.status);
+          this.setState({ isLoading: false });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.setState({ isLoading: false });
+      });
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.isTokenValidRequest();
   }
 
@@ -40,9 +39,14 @@ class RequiresToken extends React.Component {
     if (this.state.isTokenValid) {
       return <div>{this.props.children}</div>;
     }
-    this.props.history.push("/login");
-    return null;
+
+    return (
+      <ErrorDisplay
+        error="Error 401: No autorizado"
+        desc="Ya te la sabes. Tienes que iniciar sesión."
+      />
+    )
   }
 }
 
-export default withRouter(RequiresToken);
+export default RequiresToken;

@@ -9,7 +9,7 @@ function ErrorDisplay(props) {
     <div class="d-flex justify-content-center flex-column">
       <h1 className="mt-3 text-center">{props.error}</h1>
       <p className="text-center">{props.desc}</p>
-      <div class="col-6 offset-3">
+      <div className="col-6 offset-3">
         <img className="img-fluid wazowski" src={PicError} alt="Imagen Error" />
         <Link to="/" className="btn cbt-blue btn-block mt-4">Ir a Página Principal</Link>
       </div>
