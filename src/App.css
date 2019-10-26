@@ -47,13 +47,13 @@ form label {
 }
 
 .input-group-append button {
-  background-color: #FFF;
+  background-color: #F8F8F8;
   border-style: none;
   color: #41514E;
 }
 
 .input-group-append button:hover {
-  background-color: #FFF;
+  background-color: #F8F8F8;
   border-style: none;
   color: #2F88FC;
 }
