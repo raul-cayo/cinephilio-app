@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 
+import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
+
 class RequiresToken extends React.Component {
   constructor(props) {
     super(props)
