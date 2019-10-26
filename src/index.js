@@ -12,7 +12,7 @@ import Signup from "./containers/anonUsers/Signup/Signup";
 import Home from "./containers/loggedUsers/Home/Home";
 import Profile from "./containers/loggedUsers/Profile/Profile";
 import RequiresToken from "./components/RequiresToken/RequiresToken";
-import NotFound from "./components/NotFound/NotFound";
+import ErrorDisplay from "./components/ErrorDisplay/ErrorDisplay";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));
@@ -28,7 +28,12 @@ ReactDOM.render(
         <Route path="/signup" component={Signup} />
         <Route path="/home"><RequiresToken><Home /></RequiresToken></Route>
         <Route path="/profile"><RequiresToken><Profile /></RequiresToken></Route>
-        <Route path='*' component={NotFound}/>
+        <Route path="*">
+          <ErrorDisplay 
+            error="Error 404: Página no encontrada"
+            desc="No sé que ande buscando pero aquí no está." 
+          />
+        </Route>
       </Switch>
     </App>
   </Router>
