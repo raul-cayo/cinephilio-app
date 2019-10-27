@@ -6,7 +6,7 @@ import './LoadingModal.css';
 function LoadingModal(props) {
   return (
     <div className="modal-bg">
-      <div className="modal container p-1">
+      <div className="modal p-1">
         <h3 className="text-center">Cargando</h3>
         <img className="img-fluid mx-auto" src={LoadingGif} alt="Cargando" />
       </div>
