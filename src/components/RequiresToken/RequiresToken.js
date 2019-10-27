@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 
 import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
+import LoadingGif from '../../images/loading.gif';
+import LoadingGif2 from '../../images/loading_bg.gif';
 
 class RequiresToken extends React.Component {
   constructor(props) {
@@ -36,7 +38,8 @@ class RequiresToken extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div><h1>Loading mate</h1></div>;
+      return <div><img className="img-fluid" src={LoadingGif} alt="Loading" />
+      <img className="img-fluid" src={LoadingGif2} alt="Loading" /></div>;
     }
     if (this.state.isTokenValid) {
       return <div>{this.props.children}</div>;
