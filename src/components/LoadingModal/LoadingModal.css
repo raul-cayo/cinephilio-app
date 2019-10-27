@@ -16,8 +16,8 @@
   background-color: #41514E;
   border: 0.5rem solid #F8F8F8;
   border-radius: 10px;
-  left: 30%;
-  top: 20%;
+  left: 0;
+  top: 0;
   z-index: 3;
 }
 
@@ -29,7 +29,7 @@
   .modal {
     width: 90%;
     height: 50%;
-    left: 5%;
-    top: 25%;
+    left: 0;
+    top: 0;
   }
 }

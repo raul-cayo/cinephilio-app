@@ -8,7 +8,7 @@ function LoadingModal(props) {
     <div className="modal-bg">
       <div className="modal p-1">
         <h3 className="text-center">Cargando</h3>
-        <img className="img-fluid mx-auto" src={LoadingGif} alt="Cargando" />
+        <img className="img-fluid" src={LoadingGif} alt="Cargando" />
       </div>
     </div>
   )
