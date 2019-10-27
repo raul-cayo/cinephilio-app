@@ -5,6 +5,7 @@ import axios from 'axios';
 
 import { signupValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png'
+import LoadingModal from '../../../components/LoadingModal/LoadingModal';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -27,24 +28,24 @@ class Signup extends React.Component {
 
     axios.post('https://cinephilio-api.herokuapp.com/login',
       JSON.stringify(data),
-      { headers: {'Content-Type': 'application/json' }}
+      { headers: { 'Content-Type': 'application/json' } }
     )
-    .then((res) => {
-      if (res.status === 200) {
-        window.localStorage.setItem('access_token', res.data.access_token);
-        window.localStorage.setItem('refresh_token', res.data.refresh_token);
-        window.localStorage.setItem('username', res.data.username);
-        this.props.history.push("/home");
-      } else {
-        console.log("Error loginRequest status: " + res.status);
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        if (res.status === 200) {
+          window.localStorage.setItem('access_token', res.data.access_token);
+          window.localStorage.setItem('refresh_token', res.data.refresh_token);
+          window.localStorage.setItem('username', res.data.username);
+          this.props.history.push("/home");
+        } else {
+          console.log("Error loginRequest status: " + res.status);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  registerRequest() {
+  registerUserRequest() {
     let data = {
       username: this.state.username,
       email: this.state.email,
@@ -54,18 +55,18 @@ class Signup extends React.Component {
 
     axios.post('https://cinephilio-api.herokuapp.com/user',
       JSON.stringify(data),
-      { headers: {'Content-Type': 'application/json' }}
+      { headers: { 'Content-Type': 'application/json' } }
     )
-    .then((res) => {
-      if (res.status === 201) {
-        this.loginRequest();
-      } else {
-        console.log("Error registerRequest status: " + res.status);
-      }
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+      .then((res) => {
+        if (res.status === 201) {
+          this.loginRequest();
+        } else {
+          console.log("Error registerUserRequest status: " + res.status);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   registerUser(e) {
@@ -74,7 +75,7 @@ class Signup extends React.Component {
 
     if (isValid) {
       this.setState({ errors: {}, isLoading: true });
-      this.registerRequest();
+      this.registerUserRequest();
       this.setState({ isLoading: false });
 
     } else {
@@ -94,6 +95,7 @@ class Signup extends React.Component {
 
     return (
       <div className="container">
+        { this.state.isLoading && <LoadingModal /> }
         <div className="col-lg-8 offset-lg-2">
           <h1 className="titulo-form text-center align-self-center mt-4">Registro</h1>
 
