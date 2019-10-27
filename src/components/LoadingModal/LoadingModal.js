@@ -1,6 +1,7 @@
 import React from 'react';
 
 import LoadingGif from '../../images/loading.gif';
+import './LoadingModal.css';
 
 function LoadingModal(props) {
   return (

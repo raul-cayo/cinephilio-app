@@ -7,7 +7,7 @@ import LoadingModal from '../LoadingModal/LoadingModal';
 
 function ErrorDisplay(props) {
   return (
-    <div class="d-flex justify-content-center flex-column">
+    <div className="d-flex justify-content-center flex-column">
       <LoadingModal />
       <h1 className="mt-3 text-center">{props.error}</h1>
       <p className="text-center">{props.desc}</p>
