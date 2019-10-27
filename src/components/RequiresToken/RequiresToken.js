@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
+import LoadingModal from '../../../components/LoadingModal/LoadingModal';
 
 class RequiresToken extends React.Component {
   constructor(props) {
@@ -36,7 +37,7 @@ class RequiresToken extends React.Component {
 
   render() {
     if (this.state.isLoading) {
-      return <div><h1>Loading mate</h1></div>;
+      return <div><LoadingModal /></div>;
     }
     if (this.state.isTokenValid) {
       return <div>{this.props.children}</div>;
