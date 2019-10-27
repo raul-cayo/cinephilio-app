@@ -15,10 +15,10 @@
   height: 25%;
   color: #F8F8F8;
   background-color: #41514E;
-  border: 0.5rem solid #F8F8F8;
+  border: 0.25rem solid #F8F8F8;
   border-radius: 10px;
-  left: 30%;
-  top: 20%;
+  left: 40%;
+  top: 35%;
   z-index: 3;
 }
 
