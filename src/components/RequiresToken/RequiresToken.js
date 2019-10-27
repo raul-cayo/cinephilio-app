@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 
 import ErrorDisplay from '../ErrorDisplay/ErrorDisplay';
-import LoadingModal from '../../../components/LoadingModal/LoadingModal';
+import LoadingModal from '../LoadingModal/LoadingModal';
 
 class RequiresToken extends React.Component {
   constructor(props) {
