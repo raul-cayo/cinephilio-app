@@ -7,7 +7,7 @@ function LoadingModal(props) {
   return (
     <div className="modal-bg">
       <div className="modal d-flex flex-column justify-content-center">
-        <h4 className="text-center mt-3">Cargando</h4>
+        <h4 className="text-center mt-2">Cargando</h4>
         <img src={LoadingGif} alt="Cargando" />
       </div>
     </div>
