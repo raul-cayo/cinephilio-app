@@ -15,10 +15,11 @@
   height: 130px;
   color: #F8F8F8;
   background-color: #41514E;
-  border: 0.25rem solid #F8F8F8;
+  border: 0.2rem solid #F8F8F8;
   border-radius: 10px;
-  left: 40%;
+  left: 50%;
   top: 35%;
+  margin-left: -110px;
   z-index: 3;
 }
 
