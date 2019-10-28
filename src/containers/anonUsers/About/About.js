@@ -6,7 +6,7 @@ import PicDiego from '../../../images/diego.jpg'
 
 function About(props) {
   return (
-    <section className="m-5">
+    <section className="m-5 col-12 col-lg-8 col-offset-lg-2">
       <h1 className="text-center mb-2">¿Qué es Cinephilio?</h1>
       <p>Es un motor de recomendaciones que se basa en las respuestas a las encuestas que realiza cada usuario para recomendarle la mejor película. Para decidir que película se va a recomendar se utilizan algoritmos y métodos de Machine Learning.</p>
 
