@@ -47,13 +47,12 @@ class Login extends React.Component {
   loginUser(e) {
     e.preventDefault();
     const { errors, isValid } = loginValidator(this.state);
+    this.setState({ errors: errors, isLoading: true });
 
     if (isValid) {
-      this.setState({ errors: {}, isLoading: true });
       this.loginRequest();
       this.setState({ isLoading: false });
     } else {
-      this.setState({ errors: errors });
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       this.setState({ isLoading: false });
