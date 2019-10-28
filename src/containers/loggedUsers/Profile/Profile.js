@@ -15,6 +15,7 @@ class Profile extends React.Component {
       email: '',
       birthdate: '',
       password: '',
+      old_password: '',
       errors: {},
       isLoading: true
     }
@@ -29,6 +30,7 @@ class Profile extends React.Component {
           this.setState({
             username: res.data.username,
             email: res.data.email,
+            old_password: res.data.password,
             birthdate: res.data.birthdate,
             isLoading: false
           });
@@ -45,9 +47,9 @@ class Profile extends React.Component {
     let data = {
       username: this.state.username,
       email: this.state.email,
-      password: "adminroot",
+      password: this.state.password ? this.state.password : this.state.old_password,
       birthdate: this.state.birthdate
-    }
+    };
 
     axios.put('https://cinephilio-api.herokuapp.com/user',
       JSON.stringify(data),
