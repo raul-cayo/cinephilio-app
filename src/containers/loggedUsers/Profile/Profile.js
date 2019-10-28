@@ -77,14 +77,13 @@ class Profile extends React.Component {
   updateUser(e) {
     e.preventDefault();
     const { errors, isValid } = updateValidator(this.state);
+    this.setState({ errors: errors, isLoading: true });
 
     if (isValid) {
-      this.setState({ errors: {}, isLoading: true });
       this.updateUserRequest();
       this.setState({ isLoading: false });
 
     } else {
-      this.setState({ errors: errors });
       document.body.scrollTop = 0;
       document.documentElement.scrollTop = 0;
       this.setState({ isLoading: false });
