@@ -12,7 +12,7 @@ function About(props) {
 
       <h3 className="mt-5 mb-3"><strong>Equipo de Desarrollo</strong></h3>
       <div className="row">
-        <div className="col-12 col-sm-4 px-3 px-md-5">
+        <div className="col-12 col-sm-4 px-5 px-sm-3 px-md-5">
           <div className="avatar mx-auto mb-2">
             <img src={PicCayo} className="img-fluid img-thumbnail rounded-circle" />
           </div>
@@ -20,7 +20,7 @@ function About(props) {
           <p className="text-center mt-0"><strong>API DEVELOPER</strong></p>
         </div>
 
-        <div className="col-12 col-sm-4 px-3 px-md-5">
+        <div className="col-12 col-sm-4 px-5 px-sm-3 px-md-5">
           <div className="avatar mx-auto mb-2">
             <img src={PicLuis} className="img-fluid img-thumbnail rounded-circle" />
           </div>
@@ -28,7 +28,7 @@ function About(props) {
           <p className="text-center mt-0"><strong>FRONT END DEVELOPER</strong></p>
         </div>
 
-        <div className="col-12 col-sm-4 px-3 px-md-5">
+        <div className="col-12 col-sm-4 px-5 px-sm-3 px-md-5">
           <div className="avatar mx-auto mb-2">
             <img src={PicDiego} className="img-fluid img-thumbnail rounded-circle" />
           </div>
