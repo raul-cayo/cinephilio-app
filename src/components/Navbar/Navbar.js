@@ -27,7 +27,7 @@ class Navbar extends React.Component {
     window.localStorage.setItem('access_token', 'notoken');
     window.localStorage.setItem('refresh_token', 'notoken');
     window.localStorage.setItem('username', 'nousername');
-    this.props.history.push("/login");
+    this.props.history.push("/");
   }
 
   render() {

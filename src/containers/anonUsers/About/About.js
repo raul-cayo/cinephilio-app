@@ -6,38 +6,35 @@ import PicDiego from '../../../images/diego.jpg'
 
 function About(props) {
   return (
-    <section className="team-section text-center m-5">
-      <p className="grey-text w-responsive mx-auto mb-5">Conoce al equipo de desarrollo</p>
+    <section className="m-5">
+      <h1 className="text-center">¿Qué es Cinephilio?</h1>
+      <p>Es un motor de recomendaciones que se basa en las respuestas a las encuestas que realiza cada usuario para recomendarle la mejor película.</p>
+      <p>Para decidir que película se va a recomendar se utilizan algoritmos y métodos de Machine Learning.</p>
 
+      <h3 className="my-3">Conoce al equipo de desarrollo</h3>
       <div className="row">
-        <div className="col-lg-4 col-md-5 mb-lg-0 mb-5">
+        <div className="col-4 p-3">
           <div className="avatar mx-auto">
-            <img src={PicCayo} className="img-fluid img-thumbnail rounded-circle z-depth-1"
-              alt="Sample avatar" />
+            <img src={PicCayo} className="img-fluid rounded-circle" />
           </div>
-          <h5 className="font-weight-bold mt-4 mb-3">Raúl Cayo</h5>
-          <p className="text-uppercase blue-text"><strong>API developer</strong></p>
-          <p className="grey-text">Estudiante Ing. Informática.</p>
+          <p className="text-center">Raúl Cayo</p>
+          <p className="text-center"><strong>API DEVELOPER</strong></p>
         </div>
 
-        <div className="col-lg-4 col-md-5 mb-lg-0 mb-5">
+        <div className="col-4 p-3">
           <div className="avatar mx-auto">
-            <img src={PicLuis} className="img-fluid img-thumbnail rounded-circle z-depth-1"
-              alt="Sample avatar" />
+            <img src={PicLuis} className="img-fluid rounded-circle" />
           </div>
-          <h5 className="font-weight-bold mt-4 mb-3">Luis Hernández</h5>
-          <p className="text-uppercase blue-text"><strong>Front end developer</strong></p>
-          <p className="grey-text">Estudiante Ing. Informática.</p>
+          <p className="text-center">Luis Hernández</p>
+          <p className="text-center"><strong>FRONT END DEVELOPER</strong></p>
         </div>
 
-        <div className="col-lg-4 col-md-10 mb-md-0 mb-5">
+        <div className="col-4 p-3">
           <div className="avatar mx-auto">
-            <img src={PicDiego} className="img-fluid img-thumbnail rounded-circle z-depth-1"
-              alt="Sample avatar" />
+            <img src={PicDiego} className="img-fluid rounded-circle" />
           </div>
-          <h5 className="font-weight-bold mt-4 mb-3">Diego Ramírez</h5>
-          <p className="text-uppercase blue-text"><strong>DBA</strong></p>
-          <p className="grey-text">Estudiante Ing. en Computación.</p>
+          <p className="text-center">Diego Ramírez</p>
+          <p className="text-center"><strong>DBA</strong></p>
         </div>
       </div>
     </section>
