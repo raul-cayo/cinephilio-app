@@ -65,6 +65,7 @@ class Signup extends React.Component {
         }
       })
       .catch((err) => {
+        this.setState({errors: {email: "Ese correo ya esta registrado."}});
         console.log(err);
       });
   }

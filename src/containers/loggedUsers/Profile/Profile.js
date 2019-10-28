@@ -140,7 +140,7 @@ class Profile extends React.Component {
             </div>
 
             <div className="form-group">
-              <label className="control-label">Nueva Contraseña</label>
+              <label className="control-label">Nueva Contraseña (Opcional)</label>
               <div className="input-group">
                 <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" data-toggle="password" />
               </div>
