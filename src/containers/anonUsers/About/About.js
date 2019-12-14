@@ -14,7 +14,7 @@ function About(props) {
       <div className="row">
         <div className="col-12 col-sm-4 px-5 px-sm-3">
           <div className="avatar mx-auto mb-2">
-            <img src={PicCayo} className="img-fluid img-thumbnail rounded-circle" />
+            <img alt="Cayo" src={PicCayo} className="img-fluid img-thumbnail rounded-circle" />
           </div>
           <p className="text-center mb-1">Raúl Cayo</p>
           <p className="text-center mt-0"><strong>API DEVELOPER</strong></p>
@@ -22,7 +22,7 @@ function About(props) {
 
         <div className="col-12 col-sm-4 px-5 px-sm-3">
           <div className="avatar mx-auto mb-2">
-            <img src={PicLuis} className="img-fluid img-thumbnail rounded-circle" />
+            <img alt="Luis" src={PicLuis} className="img-fluid img-thumbnail rounded-circle" />
           </div>
           <p className="text-center mb-1">Luis Hernández</p>
           <p className="text-center mt-0"><strong>FRONT END DEVELOPER</strong></p>
@@ -30,7 +30,7 @@ function About(props) {
 
         <div className="col-12 col-sm-4 px-5 px-sm-3">
           <div className="avatar mx-auto mb-2">
-            <img src={PicDiego} className="img-fluid img-thumbnail rounded-circle" />
+            <img alt="Diego" src={PicDiego} className="img-fluid img-thumbnail rounded-circle" />
           </div>
           <p className="text-center mb-1">Diego Ramírez / DBA</p>
           <p className="text-center mt-0"><strong>DBA</strong></p>
