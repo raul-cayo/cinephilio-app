@@ -3,15 +3,18 @@ import React from 'react'
 const QuizComponent = (props) => {
     return (
         <div className="text-center">
-            <img alt={props.imagenAlt} src={props.imagen}/>
             <h3>{props.pregunta}</h3>
-            <div className="row">
-                <div className="col-xs-6 col-xl-6 item">
-                {props.opciones.map((imagen,i) => {
-                        return <button key={i} onClick={console.log("0")}>
-                                    <img style={{width: "18rem"}} src={imagen}/>
-                               </button>
-                    })}
+            <div className="container-fluid">
+                <div className="row justify-content-md-center">
+                    {props.opciones.map((imagen,i) =>{
+                        return (
+                            <div key={i} className="col-md-5">
+                                <button style={{marginBottom:"0.5rem", backgroundColor:"Transparent", border:"none"}} onClick={() => console.log("0")}>
+                                    <img style={{width: "18rem"}} src={imagen} alt={"Imagen"}/>
+                               </button>    
+                            </div>
+                        )
+                    } )}
                 </div>
             </div>
         </div>
