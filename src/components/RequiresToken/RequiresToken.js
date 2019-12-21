@@ -32,7 +32,9 @@ class RequiresToken extends React.Component {
   }
 
   componentDidMount() {
-    this.isTokenValidRequest();
+    setTimeout(() => {
+      this.isTokenValidRequest();
+    }, 700);
   }
 
   render() {

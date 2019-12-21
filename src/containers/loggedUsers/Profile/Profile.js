@@ -81,15 +81,17 @@ class Profile extends React.Component {
     const { errors, isValid } = updateValidator(this.state);
     this.setState({ errors: errors, isLoading: true });
 
-    if (isValid) {
-      this.updateUserRequest();
-      this.setState({ isLoading: false });
-
-    } else {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      this.setState({ isLoading: false });
-    }
+    setTimeout(() => {
+      if (isValid) {
+        this.updateUserRequest();
+        this.setState({ isLoading: false });
+  
+      } else {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setState({ isLoading: false });
+      }
+    }, 700);
   }
 
   updateInput(e) {
@@ -97,7 +99,9 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    this.getUserDataRequest();
+    setTimeout(() => {
+      this.getUserDataRequest();
+    }, 700);
   }
 
   render() {

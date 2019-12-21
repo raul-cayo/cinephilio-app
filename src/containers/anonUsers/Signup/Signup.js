@@ -75,15 +75,17 @@ class Signup extends React.Component {
     const { errors, isValid } = signupValidator(this.state);
     this.setState({ errors: errors, isLoading: true });
 
-    if (isValid) {
-      this.registerUserRequest();
-      this.setState({ isLoading: false });
-
-    } else {
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      this.setState({ isLoading: false });
-    }
+    setTimeout(() => {
+      if (isValid) {
+        this.registerUserRequest();
+        this.setState({ isLoading: false });
+  
+      } else {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setState({ isLoading: false });
+      }
+    }, 700);
   }
 
   updateInput(e) {
