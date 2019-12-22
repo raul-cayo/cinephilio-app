@@ -14,11 +14,11 @@ const QuizComponent = (props) => {
             <h3>{props.pregunta}</h3>
             <div className="container-fluid">
                 <div className="row justify-content-md-center">
-                    {props.opc.map(({picture_path,profile},i) =>{
+                    {props.opc.map(({picture_path,profile}, i) =>{
                         return (
                             <div key={i} className="col-md-5">
                                 <button onClick={() => {props.handleClic(profile)}} style={{marginBottom:"0.5rem", backgroundColor:"Transparent", border:"none"}}>
-                                    <img alt={picture_path} style={{width: "18rem"}} src={process.env.PUBLIC_URL + '/img/'+ picture_path}/>
+                                    <img alt={picture_path} style={{width: "18rem"}} src={'/questions/' + picture_path}/>
                                </button>    
                             </div>
                         )

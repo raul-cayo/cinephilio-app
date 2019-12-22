@@ -101,7 +101,7 @@ class QuizControler extends React.Component {
                     {Object.keys(this.state.perfil).map(llave =>{
                         return <div>
                             <p>
-                                {llave+": "+this.state.perfil[llave]}
+                                {llave + ": " + this.state.perfil[llave]}
                             </p>
                         </div>
                     })}
