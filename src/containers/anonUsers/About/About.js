@@ -1,8 +1,8 @@
 import React from 'react';
 
-import PicLuis from '../../../images/luis.jpg'
-import PicCayo from '../../../images/cayo.jpg'
-import PicDiego from '../../../images/diego.jpg'
+import PicLuis from '../../../images/luis.jpg';
+import PicCayo from '../../../images/cayo.jpg';
+import PicDiego from '../../../images/diego.jpg';
 
 function About(props) {
   return (

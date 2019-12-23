@@ -1,14 +1,4 @@
 let datos = [
-  [
-    "complexity",
-    "education",
-    "originality",
-    "production",
-    "realism",
-    "tension",
-    "violence"
-  ],
-
   {
     "question_id": 1,
     "text": "Selecciona un deporte",
