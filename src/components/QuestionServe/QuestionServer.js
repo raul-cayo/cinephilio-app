@@ -535,7 +535,7 @@ let datos = [
   },
   {
     "question_id": 14,
-    "text": "Selecciona una imagen",
+    "text": "¿A quién acompañarías en una aventura?",
     "picture_path": null,
     "attr": "violence",
     "answers": [
