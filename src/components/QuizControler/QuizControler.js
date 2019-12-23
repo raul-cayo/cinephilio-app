@@ -25,24 +25,11 @@ class QuizControler extends React.Component {
   };
 
   setProfile = (data) => {
-    /*  Este método nos sirve para ir creado el profile del usuario al momento de contestar
-        un quiz. Guarda los datos de los valores por respuesta y las veces que una de las 
-        clasificaciones ha aparecido para poder promediar al final  */
     let newProfile = { ...this.state.profile };
     let attrCount = { ...this.state.attrCount };
     Object.keys(data).forEach(function (key) {
-      if (!(key in newProfile)) { //La llave no está en el objeto
-        newProfile[key] = data[key];
-      }
-      else { // La llave sí está en el objeto
-        newProfile[key] += data[key];
-      }
-      if (!(key in attrCount)) { //La llave no está en el objeto
-        attrCount[key] = 1;
-      }
-      else { // La llave sí está en el objeto
-        attrCount[key] += 1;
-      }
+      newProfile[key] = newProfile[key] ? newProfile[key] + data[key] : data[key];
+      attrCount[key] = attrCount[key] ? attrCount[key] + 1 : 1;
     });
 
     this.setState({
@@ -52,35 +39,29 @@ class QuizControler extends React.Component {
   }
 
   selectAnswer(e) {
-    /*  Este método controla el proceso de creación de profile, se activa cuando se presiona en 
-        una de las imágenes de las optionsiones del quiz. Es un método propio de ésta clase pero es
-        pasado por props al hijo. 
-        
-        Quizá desde aquí se pueda hacer el request para solicitar la película   */
     this.setProfile(e);
     if (this.state.questionNumber + 1 < this.state.quiz.length) {
       this.setState({
         questionNumber: this.state.questionNumber + 1
-      })
-      return
+      });
     }
     else {
-      let finalProfile = { ...this.state.profile }
-      let conteoAtributos = { ...this.state.attrCount }
-      Object.keys(conteoAtributos).forEach((key) => {
-        finalProfile[key] = Math.round(finalProfile[key] / conteoAtributos[key])
-      })
+      let finalProfile = { ...this.state.profile };
+      let finalAttrCount = { ...this.state.attrCount };
+      Object.keys(finalAttrCount).forEach((key) => {
+        finalProfile[key] = Math.round(finalProfile[key] / finalAttrCount[key])
+      });
       this.setState({
         questionNumber: this.state.questionNumber + 1,
         profile: finalProfile
-      })
+      });
     }
 
   }
 
   componentDidMount() {
     // TODO add settimeout
-    this.getQuestionsRequest()
+    this.getQuestionsRequest();
   }
 
   render() {
