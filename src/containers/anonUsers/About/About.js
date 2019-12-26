@@ -2,9 +2,9 @@ import React from 'react';
 
 import AnonNavbar from '../../../components/Navbar/AnonNavbar';
 import SpeechBalloon from '../../../components/SpeechBalloon/SpeechBalloon';
-import PicLuis from '../../../images/luis.jpg';
-import PicCayo from '../../../images/cayo.jpg';
-import PicDiego from '../../../images/diego.jpg';
+import PicLuis from '../../../images/developers/luis.jpg';
+import PicCayo from '../../../images/developers/cayo.jpg';
+import PicDiego from '../../../images/developers/diego.jpg';
 
 function About(props) {
   return (
