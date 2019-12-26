@@ -2,7 +2,6 @@ import React from 'react';
 
 import Navbar from '../../../components/Navbar/Navbar';
 import SpeechBalloon from '../../../components/SpeechBalloon/SpeechBalloon';
-import Logo from '../../../images/LogoDark.png';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 

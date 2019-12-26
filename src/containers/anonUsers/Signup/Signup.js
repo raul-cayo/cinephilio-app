@@ -6,7 +6,6 @@ import axios from 'axios';
 import AnonNavbar from '../../../components/Navbar/AnonNavbar';
 import SpeechBalloon from '../../../components/SpeechBalloon/SpeechBalloon';
 import { signupValidator } from '../../../utils/validator';
-import Logo from '../../../images/LogoDark.png'
 import LoadingModal from '../../../components/LoadingModal/LoadingModal';
 
 class Signup extends React.Component {
