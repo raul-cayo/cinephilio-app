@@ -42,8 +42,11 @@ class Navbar extends React.Component {
 
         <div className="collapse navbar-collapse" id="collapsibleNavbar">
           <ul className="navbar-nav">
-            <li className="nav-item text-center mb-1 mt-2">
+            <li className="nav-item text-center mt-2">
               <Link to="/profile" className="nav-btn">Mi Cuenta</Link>
+            </li>
+            <li>
+              <div class="line"></div>
             </li>
             <li className="nav-item text-center">
               <button className="nav-btn" onClick={this.logoutUser.bind(this)}>Cerrar Sesión</button>

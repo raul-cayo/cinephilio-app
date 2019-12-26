@@ -23,17 +23,31 @@
   color: #41514E;
 }
 
+.cphio-navbar p {
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
 .nav-btn {
   display: block;
   text-decoration: none;
   width: 100%;
-  color: #000;
   border-radius: 2.5rem;
   background-color: #31E3CB;
-  border: 1px solid #41514E;
+  border: none;
+  color: #41514E;
   -webkit-transition-duration: 0.2s; /* Safari */
   transition-duration: 0.2s;
+  line-height: 1.8em;
+  margin: 0;
 }
+
+.line {
+  border-top: 1px solid #41514E;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
 .nav-btn:hover {
   color:#F8F8F8;
   background-color: #41514E;
