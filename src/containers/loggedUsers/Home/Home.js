@@ -44,7 +44,7 @@ class Home extends React.Component {
             <div className="col-12 col-md-3">
               <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
             </div>
-            <p className="my-auto text-box-white col-12 col-md-9 py-3">{this.state.funfact}</p>
+            <p className="my-auto text-box col-12 col-md-9 py-3">{this.state.funfact}</p>
           </div>
 
           <div className="row">

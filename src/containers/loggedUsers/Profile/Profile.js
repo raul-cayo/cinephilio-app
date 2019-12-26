@@ -116,7 +116,7 @@ class Profile extends React.Component {
             <div className="col-12 col-md-3">
               <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
             </div>
-            <p className="my-auto text-box-white col-12 col-md-9 py-3">Aqui puedes cambiar tu informacion.</p>
+            <p className="my-auto text-box col-12 col-md-9 py-3">Aqui puedes cambiar tu informacion.</p>
           </div>
 
           <form onSubmit={this.updateUser.bind(this)} className="text-center p-2 align-self-center">

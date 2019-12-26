@@ -16,7 +16,7 @@ const QuizComponent = (props) => {
         <div className="col-12 col-md-3">
           <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
         </div>
-        <p className="my-auto text-box-white col-12 col-md-9 py-3">
+        <p className="my-auto text-box col-12 col-md-9 py-3">
           ({props.number} / 7) {props.question}
         </p>
       </div>
