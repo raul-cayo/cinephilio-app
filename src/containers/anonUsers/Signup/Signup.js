@@ -139,7 +139,7 @@ class Signup extends React.Component {
               </div>
             </form>
 
-            <p className="text-center p-1 align-self-center">¿Ya tienes una cuenta? <Link to='/login'>Ingresa aqui</Link></p>
+            <p className="text-center p-1 align-self-center">¿Ya tienes una cuenta? <Link className="link" to='/login'>Ingresa aqui</Link></p>
           </div>
         </div>
       </React.Fragment>

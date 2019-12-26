@@ -98,7 +98,7 @@ class Login extends React.Component {
               </div>
             </form>
 
-            <p className="text-center p-1 align-self-center">¿No tienes una cuenta? <Link to='/signup'>Crea una aquí</Link></p>
+            <p className="text-center p-1 align-self-center">¿No tienes una cuenta? <Link className="link" to='/signup'>Crea una aquí</Link></p>
           </div>
         </div>
       </React.Fragment>
