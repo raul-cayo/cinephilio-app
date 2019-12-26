@@ -29,10 +29,7 @@ ReactDOM.render(
         <Route path="/home"><RequiresToken><Home /></RequiresToken></Route>
         <Route path="/profile"><RequiresToken><Profile /></RequiresToken></Route>
         <Route path="*">
-          <ErrorDisplay 
-            error="Error 404: Página no encontrada"
-            desc="No sé que ande buscando pero aquí no está." 
-          />
+          <ErrorDisplay error="Error 404: No sé que ande buscando pero aquí no está."/>
         </Route>
       </Switch>
     </App>

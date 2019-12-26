@@ -45,12 +45,7 @@ class RequiresToken extends React.Component {
       return <div>{this.props.children}</div>;
     }
 
-    return (
-      <ErrorDisplay
-        error="Error 401: No autorizado"
-        desc="Ya te la sabes. Tienes que iniciar sesión."
-      />
-    )
+    return <ErrorDisplay error="Error 401: Ya te la sabes. Tienes que iniciar sesión."/>;
   }
 }
 
