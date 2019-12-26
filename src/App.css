@@ -54,30 +54,29 @@ form label {
 }
 
 /***************************** Buttons ******************************/
-.cbt,
-.cbt-dk-green,
 .cbt-blue,
-.cbt-lg-green,
-.cbt-white {
+.cbt-lg-green {
   border-radius: 2rem;
   border: none;
 }
 
-.cbt-blue:hover {
-  text-decoration: none;
-  color: #000;
-}
-
-.cbt-dk-green {
-  background-color: #41514E;
-}
 .cbt-blue {
   background-color: #2F88FC;
   color: #F8F8F8;
 }
+
 .cbt-lg-green {
   background-color: #31E3CB;
 }
-.cbt-white {
-  background-color: #F8F8F8;
+
+.cbt-blue:hover {
+  color: #F8F8F8;
+}
+
+.cbt-blue:hover,
+.cbt-lg-green:hover {
+  text-decoration: none;
+  -webkit-box-shadow: 0px 0px 22px -9px rgba(255,255,255,0.94);
+  -moz-box-shadow: 0px 0px 22px -9px rgba(255,255,255,0.94);
+  box-shadow: 0px 0px 22px -9px rgba(255,255,255,0.94);
 }
