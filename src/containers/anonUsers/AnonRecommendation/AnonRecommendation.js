@@ -1,6 +1,6 @@
 import React from 'react';
 
-import QuizControler from '../../../components/QuizControler/QuizControler';
+import QuizControler from '../../../components/Quiz/QuizControler';
 
 
 function AnonRecommendation(props) {

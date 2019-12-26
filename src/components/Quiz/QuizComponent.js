@@ -2,6 +2,13 @@ import React from 'react'
 
 import Logo from '../../images/LogoDark.png';
 
+/*
+  EXPECTED PROPS
+    props.number | current question number
+    props.question | string
+    props.options | object array with answers path & profile
+    props.selectAnswer | fucntion to handle the click on option
+*/
 const QuizComponent = (props) => {
   return (
     <div className="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3">

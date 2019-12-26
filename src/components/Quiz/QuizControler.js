@@ -1,7 +1,7 @@
 import React from 'react';
 
-import QuizComponent from '../QuizComponent/QuizComponent';
-import QuestionServer from '../QuestionServe/QuestionServer';
+import QuizComponent from './QuizComponent';
+import QuestionServer from './QuestionServer';
 
 class QuizControler extends React.Component {
   constructor(props) {
