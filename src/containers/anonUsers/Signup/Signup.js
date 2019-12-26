@@ -4,6 +4,7 @@ import isEmpty from 'lodash/isEmpty';
 import axios from 'axios';
 
 import AnonNavbar from '../../../components/Navbar/AnonNavbar';
+import SpeechBalloon from '../../../components/SpeechBalloon/SpeechBalloon';
 import { signupValidator } from '../../../utils/validator';
 import Logo from '../../../images/LogoDark.png'
 import LoadingModal from '../../../components/LoadingModal/LoadingModal';
@@ -102,17 +103,9 @@ class Signup extends React.Component {
         <div className="container">
           { this.state.isLoading && <LoadingModal /> }
           <div className="col-lg-8 offset-lg-2">
+            <SpeechBalloon>Bienvenido, aquí puedes completar tu registro.</SpeechBalloon>
 
-            <div className="row align-self-center mt-1 mb-2 px-4">
-              <div className="col-12 col-md-3">
-                <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
-              </div>
-              <p className="my-auto text-box col-12 col-md-9 py-3">
-                Completa tu registro y te haré las mejores recomendaciones de películas.
-              </p>
-            </div>
-
-            <form onSubmit={this.registerUser.bind(this)} className="text-center p-2 align-self-center">
+            <form onSubmit={this.registerUser.bind(this)} className="text-center pt-2 align-self-center">
               <div className={(isEmpty(errors) ? "d-none" : "alert alert-danger")}>
                 {errors.username && <div><span className="help-block">{errors.username}</span><br /></div>}
                 {errors.email && <div><span className="help-block">{errors.email}</span><br /></div>}
@@ -146,7 +139,7 @@ class Signup extends React.Component {
               </div>
             </form>
 
-            <p className="text-center p-2 align-self-center">¿Ya tienes una cuenta? <Link to='/login'>Ingresa aqui</Link></p>
+            <p className="text-center p-1 align-self-center">¿Ya tienes una cuenta? <Link to='/login'>Ingresa aqui</Link></p>
           </div>
         </div>
       </React.Fragment>

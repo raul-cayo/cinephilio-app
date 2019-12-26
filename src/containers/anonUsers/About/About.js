@@ -1,6 +1,7 @@
 import React from 'react';
 
 import AnonNavbar from '../../../components/Navbar/AnonNavbar';
+import SpeechBalloon from '../../../components/SpeechBalloon/SpeechBalloon';
 import PicLuis from '../../../images/luis.jpg';
 import PicCayo from '../../../images/cayo.jpg';
 import PicDiego from '../../../images/diego.jpg';
@@ -10,6 +11,7 @@ function About(props) {
     <React.Fragment>
       <AnonNavbar/>
       <section className="m-5 col-12 col-lg-8 offset-lg-2">
+        <SpeechBalloon>TEXT ABOUT</SpeechBalloon>
         <h1 className="text-center mb-2">¿Qué es Cinephilio?</h1>
         <p>Es un motor de recomendaciones que se basa en las respuestas a las encuestas que realiza cada usuario para recomendarle la mejor película. Para decidir que película se va a recomendar se utilizan algoritmos y métodos de Machine Learning.</p>
 

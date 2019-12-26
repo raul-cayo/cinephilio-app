@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Logo from '../../images/LogoDark.png';
+import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
 
 /*
   EXPECTED PROPS
@@ -12,18 +12,12 @@ import Logo from '../../images/LogoDark.png';
 const QuizComponent = (props) => {
   return (
     <div className="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3">
-      <div className="row my-3 px-4">
-        <div className="col-12 col-md-3">
-          <img className="logo rounded-circle d-block mx-auto my-2" src={Logo} alt="Logo Cinephilio" />
-        </div>
-        <p className="my-auto text-box col-12 col-md-9 py-3">
-          ({props.number} / 7) {props.question}
-        </p>
-      </div>
+      <SpeechBalloon>({props.number} / 7) {props.question}</SpeechBalloon>
+      
       <div className="row">
         {props.options.map(({ picture_path, profile }, i) => {
           return (
-            <div key={i} className="col-md-6 p-0">
+            <div key={i} className="col-10 offset-1 offset-md-0 col-md-6 p-0">
               <button
                 className="m-1 m-md-2"
                 onClick={() => { props.selectAnswer(profile) }}
@@ -41,6 +35,6 @@ const QuizComponent = (props) => {
       </div>
     </div>
   )
-}
+};
 
 export default QuizComponent;
