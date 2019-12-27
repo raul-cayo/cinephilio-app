@@ -1,6 +1,6 @@
 import React from 'react';
 
-import QuizComponent from './QuizComponent';
+import QuizQuestions from './QuizQuestions';
 import QuestionServer from './QuestionServer';
 
 class QuizController extends React.Component {
@@ -15,7 +15,7 @@ class QuizController extends React.Component {
     this.selectAnswer = this.selectAnswer.bind(this)
   }
 
-  getQuestionsRequest = () => {
+  getQuestionsRequest() {
     // Fake http request
     QuestionServer().then(questions => {
       this.setState({
@@ -24,7 +24,12 @@ class QuizController extends React.Component {
     })
   };
 
-  setProfile = (data) => {
+  getResultRequest() {
+    console.log('Send profile and movies seen');
+    console.log('Get movie recommendation');
+  }
+
+  setProfile(data) {
     let newProfile = { ...this.state.profile };
     let attrCount = { ...this.state.attrCount };
     Object.keys(data).forEach(function (key) {
@@ -39,6 +44,7 @@ class QuizController extends React.Component {
   }
 
   selectAnswer(e) {
+    console.log(e);
     this.setProfile(e);
     if (this.state.questionNumber + 1 < this.state.quiz.length) {
       this.setState({
@@ -68,16 +74,16 @@ class QuizController extends React.Component {
     let currentQuestion = this.state.quiz[this.state.questionNumber];
     return (
       <div>
-        { // Quiz
+        { // Quiz questions
           this.state.quiz.length > 0 && this.state.questionNumber < 7 &&
-          <QuizComponent 
+          <QuizQuestions 
             selectAnswer={this.selectAnswer} 
             question={currentQuestion.text} 
             options={currentQuestion.answers}
             number={this.state.questionNumber + 1}
           />
         }
-        { // Quiz results
+        { // Quiz result
           this.state.questionNumber === 7 &&
           <React.Fragment>
             <h2>Los resultados son</h2>

@@ -37,10 +37,13 @@ class Login extends React.Component {
           this.props.history.push("/home");
         } else {
           console.log("Error loginRequest status: " + res.status);
+          this.setState({ isLoading: false });
         }
       })
       .catch((err) => {
-        this.setState({ errors: { credentials: "Correo o contraseña incorrectos" } });
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setState({ errors: { credentials: "Correo o contraseña incorrectos" }, isLoading: false });
         console.log(err);
       });
   }
@@ -53,7 +56,6 @@ class Login extends React.Component {
     setTimeout(() => {
       if (isValid) {
         this.loginRequest();
-        this.setState({ isLoading: false });
       } else {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;

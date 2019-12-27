@@ -9,7 +9,7 @@ import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
     props.options | object array with answers path & profile
     props.selectAnswer | fucntion to handle the click on option
 */
-const QuizComponent = (props) => {
+const QuizQuestions = (props) => {
   return (
     <div className="col-10 offset-1 col-md-8 offset-md-2 col-xl-6 offset-xl-3">
       <SpeechBalloon>({props.number} / 7) {props.question}</SpeechBalloon>
@@ -37,4 +37,4 @@ const QuizComponent = (props) => {
   )
 };
 
-export default QuizComponent;
+export default QuizQuestions;

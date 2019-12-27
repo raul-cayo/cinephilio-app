@@ -39,6 +39,7 @@ class Signup extends React.Component {
           this.props.history.push("/home");
         } else {
           console.log("Error loginRequest status: " + res.status);
+          this.setState({ isLoading: false });
         }
       })
       .catch((err) => {
@@ -63,10 +64,13 @@ class Signup extends React.Component {
           this.loginRequest();
         } else {
           console.log("Error registerUserRequest status: " + res.status);
+          this.setState({ isLoading: false });
         }
       })
       .catch((err) => {
-        this.setState({errors: {email: "Ese correo ya esta registrado."}});
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+        this.setState({errors: {email: "Ese correo ya esta registrado."}, isLoading: false});
         console.log(err);
       });
   }
@@ -79,7 +83,6 @@ class Signup extends React.Component {
     setTimeout(() => {
       if (isValid) {
         this.registerUserRequest();
-        this.setState({ isLoading: false });
   
       } else {
         document.body.scrollTop = 0;
