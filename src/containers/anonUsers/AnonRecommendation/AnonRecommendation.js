@@ -1,7 +1,7 @@
 import React from 'react';
 
 import AnonNavbar from '../../../components/Navbar/AnonNavbar';
-import QuizControler from '../../../components/Quiz/QuizControler';
+import QuizController from '../../../components/Quiz/QuizController';
 
 
 function AnonRecommendation(props) {
@@ -9,7 +9,7 @@ function AnonRecommendation(props) {
   return (
     <React.Fragment>
       <AnonNavbar/>
-      <QuizControler/>
+      <QuizController/>
     </React.Fragment>
   )
 }

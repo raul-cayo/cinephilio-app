@@ -3,7 +3,7 @@ import React from 'react';
 import QuizComponent from './QuizComponent';
 import QuestionServer from './QuestionServer';
 
-class QuizControler extends React.Component {
+class QuizController extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -95,4 +95,4 @@ class QuizControler extends React.Component {
   }
 }
 
-export default QuizControler
+export default QuizController;
