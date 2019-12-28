@@ -1,7 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 
 import QuizQuestions from './QuizQuestions';
 import QuestionServer from './QuestionServer';
+import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
+import LoadingModal from '../LoadingModal/LoadingModal';
 
 class QuizController extends React.Component {
   constructor(props) {
@@ -10,18 +13,37 @@ class QuizController extends React.Component {
       quiz: [],
       attrCount: {},
       profile: {},
-      questionNumber: 0
+      questionNumber: 0,
+      isLoading: true
     };
     this.selectAnswer = this.selectAnswer.bind(this)
   }
 
   getQuestionsRequest() {
-    // Fake http request
+    /*let data = { questions_id: [] };
+    axios.get('https://cinephilio-engine.herokuapp.com/quiz',
+      JSON.stringify(data),
+      { headers: { 'Content-Type': 'application/json' } }
+    )
+      .then((res) => {
+        if (res.status === 200) {
+          this.setState({ quiz: res.data.quiz, isLoading: false });
+        } else {
+          console.log("Error loginRequest status: " + res.status);
+          this.setState({ isLoading: false });
+        }
+      })
+      .catch((err) => {
+        console.log('catch: ' + err);
+        this.setState({ isLoading: false });
+      });*/
+
     QuestionServer().then(questions => {
       this.setState({
-        quiz: questions
-      })
-    })
+        quiz: questions,
+        isLoading: false
+      });
+    });
   };
 
   getResultRequest() {
@@ -62,18 +84,24 @@ class QuizController extends React.Component {
         profile: finalProfile
       });
     }
+  }
 
+  getResult() {
+    // this.getResultRequest();
+    // change status
   }
 
   componentDidMount() {
-    // TODO add settimeout
-    this.getQuestionsRequest();
+    setTimeout(() => {
+      this.getQuestionsRequest();
+    }, 700);
   }
 
   render() {
     let currentQuestion = this.state.quiz[this.state.questionNumber];
     return (
       <div>
+        { this.state.isLoading && <LoadingModal /> }
         { // Quiz questions
           this.state.quiz.length > 0 && this.state.questionNumber < 7 &&
           <QuizQuestions 
@@ -85,17 +113,13 @@ class QuizController extends React.Component {
         }
         { // Quiz result
           this.state.questionNumber === 7 &&
-          <React.Fragment>
-            <h2>Los resultados son</h2>
-            {Object.keys(this.state.profile).map(llave => {
-              return <div>
-                <p>
-                  {llave + ": " + this.state.profile[llave]}
-                </p>
-              </div>
-            })}
-          </React.Fragment>
-          }
+          <div className="container">
+            <div className="col-lg-8 offset-lg-2">
+              <SpeechBalloon>Mmm... Creo conocer una película que te va a gustar.</SpeechBalloon>
+              <button className="btn cbt-blue btn-block py-3 mt-4">Ver recomendación</button>
+            </div>
+          </div>
+        }
       </div>
     )
   }

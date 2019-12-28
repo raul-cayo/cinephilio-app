@@ -62,7 +62,6 @@ class Login extends React.Component {
         this.setState({ isLoading: false });
       }
     }, 700);
-    
   }
 
   updateInput(e) {
