@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import About from "./containers/anonUsers/About/About";
 import AnonRecommendation from "./containers/anonUsers/AnonRecommendation/AnonRecommendation";
+import Recommendation from "./containers/loggedUsers/Recommendation/Recommendation";
 import FrontPage from "./containers/anonUsers/FrontPage/FrontPage";
 import Login from "./containers/anonUsers/Login/Login";
 import Signup from "./containers/anonUsers/Signup/Signup";
@@ -28,6 +29,7 @@ ReactDOM.render(
         <Route path="/signup" component={Signup} />
         <Route path="/home"><RequiresToken><Home /></RequiresToken></Route>
         <Route path="/profile"><RequiresToken><Profile /></RequiresToken></Route>
+        <Route path="/recomm"><RequiresToken><Recommendation /></RequiresToken></Route>
         <Route path="*">
           <ErrorDisplay error="Error 404: No sé que ande buscando pero aquí no está."/>
         </Route>

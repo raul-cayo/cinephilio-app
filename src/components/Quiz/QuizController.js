@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import QuizQuestions from './QuizQuestions';
 import QuestionServer from './QuestionServer';
@@ -113,6 +114,7 @@ class QuizController extends React.Component {
       else {
         // get user profile and movies seen
         // this.getResultRequest();
+        this.getResultRequest(this.state.profile);
         console.log("hehe shiny");
       }
     }, 700);
@@ -174,9 +176,8 @@ class QuizController extends React.Component {
                 </div>
               </div>
 
-              <button 
-                className="btn cbt-blue btn-block py-3 mt-4"
-              >Terminar</button>
+              {this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/">Terminar</Link>}
+              {!this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/home">Terminar</Link>}
 
             </div>
           </div>

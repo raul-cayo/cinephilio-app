@@ -46,7 +46,7 @@ class Navbar extends React.Component {
               <Link to="/profile" className="nav-btn">Mi Cuenta</Link>
             </li>
             <li>
-              <div class="line"></div>
+              <div className="line"></div>
             </li>
             <li className="nav-item text-center">
               <button className="nav-btn" onClick={this.logoutUser.bind(this)}>Cerrar Sesión</button>
