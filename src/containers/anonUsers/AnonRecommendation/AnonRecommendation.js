@@ -7,7 +7,7 @@ function AnonRecommendation(props) {
   return (
     <React.Fragment>
       <AnonNavbar/>
-      <QuizController/>
+      <QuizController anon={true} />
     </React.Fragment>
   )
 }

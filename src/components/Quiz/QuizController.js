@@ -5,6 +5,7 @@ import QuizQuestions from './QuizQuestions';
 import QuestionServer from './QuestionServer';
 import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
 import LoadingModal from '../LoadingModal/LoadingModal';
+import './QuizController.css';
 
 class QuizController extends React.Component {
   constructor(props) {
@@ -14,9 +15,10 @@ class QuizController extends React.Component {
       attrCount: {},
       profile: {},
       questionNumber: 0,
-      isLoading: true
+      isLoading: true,
+      recommendation: {}
     };
-    this.selectAnswer = this.selectAnswer.bind(this)
+    this.selectAnswer = this.selectAnswer.bind(this);
   }
 
   getQuestionsRequest() {
@@ -46,9 +48,25 @@ class QuizController extends React.Component {
     });
   };
 
-  getResultRequest() {
-    console.log('Send profile and movies seen');
-    console.log('Get movie recommendation');
+  getResultRequest(profile, moviesSeen = []) {
+    // send profile and movies seen
+    // get movie recommendation and change state
+
+    console.log("profile");
+    console.log(profile);
+    console.log("movies seen");
+    console.log(moviesSeen);
+
+    this.setState({
+      questionNumber: 99,
+      recommendation: {
+        movie_id: 339,
+        poster_path: "/aREHjLD3kwQFcL1ncNOx8ggDGxA.jpg",
+        title: "Night On Earth",
+        release_date: "1991"
+      },
+      isLoading: false
+    });
   }
 
   setProfile(data) {
@@ -66,7 +84,6 @@ class QuizController extends React.Component {
   }
 
   selectAnswer(e) {
-    console.log(e);
     this.setProfile(e);
     if (this.state.questionNumber + 1 < this.state.quiz.length) {
       this.setState({
@@ -87,8 +104,18 @@ class QuizController extends React.Component {
   }
 
   getResult() {
-    // this.getResultRequest();
-    // change status
+    this.setState({ isLoading: true });
+
+    setTimeout(() => {
+      if (this.props.anon) {
+        this.getResultRequest(this.state.profile);
+      }
+      else {
+        // get user profile and movies seen
+        // this.getResultRequest();
+        console.log("hehe shiny");
+      }
+    }, 700);
   }
 
   componentDidMount() {
@@ -111,12 +138,46 @@ class QuizController extends React.Component {
             number={this.state.questionNumber + 1}
           />
         }
-        { // Quiz result
+        { // Get result
           this.state.questionNumber === 7 &&
           <div className="container">
-            <div className="col-lg-8 offset-lg-2">
-              <SpeechBalloon>Mmm... Creo conocer una película que te va a gustar.</SpeechBalloon>
-              <button className="btn cbt-blue btn-block py-3 mt-4">Ver recomendación</button>
+            <div className="col-lg-10 offset-lg-1 mt-4">
+              <SpeechBalloon>Mmm... creo conocer una película que te va a gustar.</SpeechBalloon>
+              <button 
+                className="btn cbt-blue btn-block py-3 mt-4"
+                onClick={this.getResult.bind(this)}
+              >Ver recomendación</button>
+            </div>
+          </div>
+        }
+        { // Quiz result
+          this.state.questionNumber === 99 &&
+          <div className="container">
+            <div className="col-lg-10 offset-lg-1 mt-4">
+              <SpeechBalloon>Te recomiendo esta película.</SpeechBalloon>
+
+              <div className="movie-display row mt-4">
+                <div className="col-8 p-0">
+                  <div className="movie-title p-2 pl-4">
+                    {this.state.recommendation.title.toUpperCase()}
+                  </div>
+                  <div className="p-2 pl-4">
+                    <p>{this.state.recommendation.release_date}</p>
+                  </div>
+                </div>
+                <div className="col-4 p-0">
+                  <img
+                    className="img-fluid"
+                    src={ "http://image.tmdb.org/t/p/w500/" + this.state.recommendation.poster_path}
+                    alt="Movie Poster">
+                  </img>
+                </div>
+              </div>
+
+              <button 
+                className="btn cbt-blue btn-block py-3 mt-4"
+              >Terminar</button>
+
             </div>
           </div>
         }

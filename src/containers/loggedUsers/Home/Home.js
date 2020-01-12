@@ -41,7 +41,7 @@ class Home extends React.Component {
       <div>
         <Navbar username={"User Name"} />
         <div className="container">
-          <div className="col-lg-10 offset-lg-1 pt-1 pt-md-3">
+          <div className="col-lg-10 offset-lg-1 mt-4">
             <SpeechBalloon>{this.state.funfact}</SpeechBalloon>
 
             <div className="row">
