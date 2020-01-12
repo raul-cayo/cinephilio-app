@@ -112,10 +112,23 @@ class QuizController extends React.Component {
         this.getResultRequest(this.state.profile);
       }
       else {
-        // get user profile and movies seen
-        // this.getResultRequest();
-        this.getResultRequest(this.state.profile);
-        console.log("hehe shiny");
+        axios.get( // TODO change this method on the api to get all info needed an rename it profile
+          'https://cinephilio-api.herokuapp.com/user-profile',
+          { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') } }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            let currentProfile = res.data;
+            delete currentProfile.user_id;
+            console.log('hererere');
+            this.getResultRequest(currentProfile, []);
+          } else {
+            console.log("Error getResult user profile: " + res.status);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       }
     }, 700);
   }
