@@ -46,10 +46,10 @@ class Home extends React.Component {
 
             <div className="row">
               <div className="form-group mt-5 col-12 col-md-12 mx-auto">
-                <Link to="/recomm" className="btn cbt-blue btn-block py-3">Recomiendame una Película</Link>
+                <Link to="/recommendation" className="btn cbt-blue btn-block py-3">Recomiendame una Película</Link>
               </div>
               <div className="form-group mt-2 col-12 col-md-12 mx-auto">
-                <Link to="/movies-seen" className="btn cbt-blue btn-block">Películas Vistas</Link>
+                <Link to="/seen" className="btn cbt-blue btn-block">Películas Vistas</Link>
               </div>
             </div>
           </div>
