@@ -8,7 +8,7 @@ import axios from 'axios';
 
 class Home extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       funfact: "Bruce Lee era tan rápido, que tenían que disminuir la velocidad"
       + " en las películas para que se notaran sus movimientos, en todas las"
@@ -45,10 +45,10 @@ class Home extends React.Component {
             <SpeechBalloon>{this.state.funfact}</SpeechBalloon>
 
             <div className="row">
-              <div className="form-group mt-5 col-12 col-md-12 mx-auto">
+              <div className="mt-5 col-12 col-md-12 mx-auto">
                 <Link to="/recommendation" className="btn cbt-blue btn-block py-3">Recomiendame una Película</Link>
               </div>
-              <div className="form-group mt-2 col-12 col-md-12 mx-auto">
+              <div className="mt-3 col-12 col-md-12 mx-auto">
                 <Link to="/seen" className="btn cbt-blue btn-block">Películas Vistas</Link>
               </div>
             </div>
