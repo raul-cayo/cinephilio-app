@@ -1,0 +1,23 @@
+
+#movies-seen {
+  width: 100%;
+}
+
+#movies-seen li {
+  background-color: #202728;
+  color: #F8F8F8;
+  border-top: 2px solid #41514E;
+}
+
+.seen-actions .material-icons {
+  color: #808B89;
+  cursor: pointer;
+}
+
+.seen-actions .material-icons:hover {
+  color: #31E3CB;
+}
+
+.seen-actions .material-icons.trash:hover {
+  color: rgb(227, 49, 49);
+}

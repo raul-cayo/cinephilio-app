@@ -13,6 +13,7 @@ import Signup from "./containers/anonUsers/Signup/Signup";
 import Home from "./containers/loggedUsers/Home/Home";
 import Profile from "./containers/loggedUsers/Profile/Profile";
 import Seen from "./containers/loggedUsers/Seen/Seen";
+import AddMovie from "./containers/loggedUsers/AddMovie/AddMovie"
 import RequiresToken from "./components/RequiresToken/RequiresToken";
 import ErrorDisplay from "./components/ErrorDisplay/ErrorDisplay";
 import * as serviceWorker from './serviceWorker';
@@ -32,6 +33,7 @@ ReactDOM.render(
         <Route path="/profile"><RequiresToken><Profile /></RequiresToken></Route>
         <Route path="/recommendation"><RequiresToken><Recommendation /></RequiresToken></Route>
         <Route path="/seen"><RequiresToken><Seen /></RequiresToken></Route>
+        <Route path="/add-movie"><RequiresToken><AddMovie /></RequiresToken></Route>
         <Route path="*">
           <ErrorDisplay error="Error 404: No sé que ande buscando pero aquí no está."/>
         </Route>
