@@ -23,7 +23,7 @@ class QuizController extends React.Component {
   }
 
   getQuestionsRequest() {
-    /*let data = { questions_id: [] };
+    let data = { questions_id: [] };
     axios.get('https://cinephilio-engine.herokuapp.com/quiz',
       JSON.stringify(data),
       { headers: { 'Content-Type': 'application/json' } }
@@ -39,14 +39,14 @@ class QuizController extends React.Component {
       .catch((err) => {
         console.log('catch: ' + err);
         this.setState({ isLoading: false });
-      });*/
-
-    QuestionServer().then(questions => {
-      this.setState({
-        quiz: questions,
-        isLoading: false
       });
-    });
+
+    // QuestionServer().then(questions => {
+    //   this.setState({
+    //     quiz: questions,
+    //     isLoading: false
+    //   });
+    // });
   };
 
   getResultRequest(profile, moviesSeen = []) {
