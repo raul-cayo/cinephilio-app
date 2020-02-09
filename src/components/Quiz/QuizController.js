@@ -25,7 +25,7 @@ class QuizController extends React.Component {
   getQuestionsRequest() {
     let data = { questions_id: [] };
     axios.get('https://cinephilio-engine.herokuapp.com/quiz',
-      data,
+      JSON.stringify(data),
       { headers: { 'Content-Type': 'application/json' } }
     )
       .then((res) => {
