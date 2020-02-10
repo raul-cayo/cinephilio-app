@@ -37,12 +37,13 @@ class Seen extends React.Component {
       console.log(res.data.movies_seen)
       let arrayUsuario = res.data.movies_seen.map(movie => {
         if(!movie.is_deleted) return movie.movie_id})
-      console.log(arrayUsuario)
+      // console.log(arrayUsuario)
       //Llamada para tener la lista de todas las películas
       axios.post('https://cinephilio-engine.herokuapp.com/movies-seen',
       JSON.stringify({movies_id: arrayUsuario}),
       {headers:{ 'Content-Type': 'application/json'}})
       .then((res) => {
+        console.log(res)
         this.setState({
           moviesSeen: res.data.movies_seen,
           isLoading: false

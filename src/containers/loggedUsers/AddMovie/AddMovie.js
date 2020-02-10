@@ -68,12 +68,18 @@ class Seen extends React.Component {
 
   addMovie= (liked, movieId) =>{
     console.log("Añadiendo peli", liked, movieId)
-    // console.log(JSON.stringify({liked_by_user: liked, is_deleted: false}))
+    console.log(JSON.stringify({liked_by_user: liked, is_deleted: false}))
     axios.put(`https://cinephilio-api.herokuapp.com/movie-seen/${movieId}`,
     JSON.stringify({liked_by_user: liked, is_deleted: false}),
     {headers: {"Content-type": "application/json",
                'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
-    .then(res => console.log(res))
+    .then(res => {
+      // console.log(res)
+      let listaCompleta = this.state.moviesSeen.filter(movie => movie.movie_id !== movieId)
+      this.setState({
+        moviesSeen: listaCompleta
+      })
+    })
     .catch(err => console.log(err))
   }
 
@@ -102,16 +108,19 @@ class Seen extends React.Component {
               Peliculas que puedes agregar a tu lista personal.
             </SpeechBalloon>
 
-            <div className="row">
+            <div style={{marginBottom: '1.5rem'}} className="row">
               <input 
                 placeholder = "Busca una película"
                 onChange = {this.handleChange}
                 style={{marginBottom: '0.5rem'}} 
                 className="text-box col-12 col-md-6 py-2"/>
+              <Link  className="btn-primary" to="/seen">
+                Regresar a mis películas
+              </Link>
               {movieList}
             </div>
 
-            {/* <Link style={{marginBottom: '1.5rem'}} className="btn cbt-blue btn-block py-3 mt-4" to="/add-movie">
+            {/* <Link  className="btn cbt-blue btn-block py-3 mt-4" to="/add-movie">
               Agregar Películas
             </Link> */}
           </div>

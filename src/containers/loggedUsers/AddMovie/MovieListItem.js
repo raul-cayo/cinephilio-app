@@ -19,7 +19,7 @@ export default (props) => {
           <label className="movie-liked-text">¿Te gustó?</label>
           <i onClick={() => {newMovie(true)}} className="material-icons mx-2">thumb_up</i>
           <i onClick={() => {newMovie(false)}} className="material-icons mx-2">thumb_down</i>
-          <i onClick={() => {setEspera(!espera)}} className="material-icons">cancel</i>
+          <i onClick={() => {setEspera(!espera)}} className="material-icons trash">cancel</i>
         </React.Fragment>}
         {added && 
         <React.Fragment>
