@@ -27,3 +27,9 @@
   position: absolute;
   margin-left: -5rem;
 }
+
+.movie-added-text{
+  display: inline;
+  position: absolute;
+  margin-left: -8rem;
+}

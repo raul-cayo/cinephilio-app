@@ -19,6 +19,7 @@ class Seen extends React.Component {
       isLoading: true
     }
     this.handleChange = this.handleChange.bind(this)
+    this.addMovie = this.addMovie.bind(this)
   }
 
   componentDidMount() {
@@ -45,6 +46,7 @@ class Seen extends React.Component {
     .catch((err) => console.log("Error en la matrix"))
   }
 
+  // Sirve para hacer el filtro de las películas
   handleChange = (e) => {
     let listaActual = []
     let nuevaLista = []
@@ -64,6 +66,17 @@ class Seen extends React.Component {
     })
   }
 
+  addMovie= (liked, movieId) =>{
+    console.log("Añadiendo peli", liked, movieId)
+    // console.log(JSON.stringify({liked_by_user: liked, is_deleted: false}))
+    axios.put(`https://cinephilio-api.herokuapp.com/movie-seen/${movieId}`,
+    JSON.stringify({liked_by_user: liked, is_deleted: false}),
+    {headers: {"Content-type": "application/json",
+               'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+  }
+
   render() {
     let moviesSeen = this.state.moviesSearch;
     let movieList = (
@@ -72,7 +85,9 @@ class Seen extends React.Component {
           return <MovieListItem
             key={movie.movie_id}
             title={movie.title}
-            year={movie.release_date} />
+            year={movie.release_date}
+            movieId={movie.movie_id} 
+            addNewMovie={this.addMovie}/>
         })}
       </ul>
     );
@@ -96,9 +111,9 @@ class Seen extends React.Component {
               {movieList}
             </div>
 
-            <Link style={{marginBottom: '1.5rem'}} className="btn cbt-blue btn-block py-3 mt-4" to="/add-movie">
+            {/* <Link style={{marginBottom: '1.5rem'}} className="btn cbt-blue btn-block py-3 mt-4" to="/add-movie">
               Agregar Películas
-            </Link>
+            </Link> */}
           </div>
         </div>
 
