@@ -21,3 +21,9 @@
 .seen-actions .material-icons.trash:hover {
   color: rgb(227, 49, 49);
 }
+
+.movie-liked-text{
+  display: inline;
+  position: absolute;
+  margin-left: -5rem;
+}

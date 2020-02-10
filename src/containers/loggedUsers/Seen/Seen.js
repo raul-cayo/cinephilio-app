@@ -6,7 +6,7 @@ import LoadingModal from '../../../components/LoadingModal/LoadingModal';
 import MovieListItem from './MovieListItem';
 import SeenServer from './SeenServer';
 import { Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import './Seen.css';
 
 
@@ -30,15 +30,33 @@ class Seen extends React.Component {
   };
 
   componentDidMount() {
-    setTimeout(() => {
-      this.getMoviesSeenRequest();
-    }, 700);
+    //Llamada para tener la lista del usuario
+    axios.get('https://cinephilio-api.herokuapp.com/movies-seen',
+    {headers: {'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
+    .then((res) => {
+      console.log(res.data.movies_seen)
+      let arrayUsuario = res.data.movies_seen.map(movie => {
+        if(!movie.is_deleted) return movie.movie_id})
+      console.log(arrayUsuario)
+      //Llamada para tener la lista de todas las películas
+      axios.post('https://cinephilio-engine.herokuapp.com/movies-seen',
+      JSON.stringify({movies_id: arrayUsuario}),
+      {headers:{ 'Content-Type': 'application/json'}})
+      .then((res) => {
+        this.setState({
+          moviesSeen: res.data.movies_seen,
+          isLoading: false
+        })
+      })
+      .catch(error => console.log(error))
+    })
+    .catch((err) => console.log("Error en la matrix"))
   }
 
   render() {
     let moviesSeen = this.state.moviesSeen;
     let movieList = (
-      <ul id='movies-seen' class="list-group">
+      <ul id='movies-seen' className="list-group">
         {moviesSeen.map(movie => {
           return <MovieListItem
             key={movie.movie_id}
