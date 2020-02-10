@@ -34,7 +34,7 @@ class Seen extends React.Component {
     axios.get('https://cinephilio-api.herokuapp.com/movies-seen',
     {headers: {'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
     .then((res) => {
-      console.log(res.data.movies_seen)
+      // console.log(res.data.movies_seen)
       let arrayUsuario = res.data.movies_seen.map(movie => {
         if(!movie.is_deleted) return movie.movie_id})
       // console.log(arrayUsuario)
@@ -42,10 +42,15 @@ class Seen extends React.Component {
       axios.post('https://cinephilio-engine.herokuapp.com/movies-seen',
       JSON.stringify({movies_id: arrayUsuario}),
       {headers:{ 'Content-Type': 'application/json'}})
-      .then((res) => {
-        console.log(res)
+      .then((res2) => {
+        let unionArray = res.data.movies_seen.map((item,i) => {
+          if(item.movie_id === res2.data.movies_seen[i].movie_id){
+            return Object.assign({},item,res2.data.movies_seen[i])
+          }
+        })
+        console.log(unionArray)
         this.setState({
-          moviesSeen: res.data.movies_seen,
+          moviesSeen: unionArray,
           isLoading: false
         })
       })
@@ -62,6 +67,7 @@ class Seen extends React.Component {
           return <MovieListItem
             key={movie.movie_id}
             title={movie.title}
+            liked={movie.liked_by_user}
             year={movie.release_date} />
         })}
       </ul>
