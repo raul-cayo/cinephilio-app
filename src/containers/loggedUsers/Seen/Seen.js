@@ -17,6 +17,7 @@ class Seen extends React.Component {
       moviesSeen: [],
       isLoading: true
     }
+    this.changeState = this.changeState.bind(this)
   }
 
   getMoviesSeenRequest() {
@@ -48,7 +49,7 @@ class Seen extends React.Component {
             return Object.assign({},item,res2.data.movies_seen[i])
           }
         })
-        console.log(unionArray)
+        // console.log(unionArray)
         this.setState({
           moviesSeen: unionArray,
           isLoading: false
@@ -59,6 +60,15 @@ class Seen extends React.Component {
     .catch((err) => console.log("Error en la matrix"))
   }
 
+  changeState = (state, movieId, isDeleted) =>{
+    axios.put(`https://cinephilio-api.herokuapp.com/movie-seen/${movieId}`,
+    JSON.stringify({liked_by_user: state, is_deleted: isDeleted}),
+    {headers: {"Content-type": "application/json",
+               'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
+               .then(res => console.log(res))
+               .catch(err => console.log(err))
+  }
+
   render() {
     let moviesSeen = this.state.moviesSeen;
     let movieList = (
@@ -66,8 +76,10 @@ class Seen extends React.Component {
         {moviesSeen.map(movie => {
           return <MovieListItem
             key={movie.movie_id}
+            movieId={movie.movie_id}
             title={movie.title}
             liked={movie.liked_by_user}
+            likeChange={this.changeState}
             year={movie.release_date} />
         })}
       </ul>

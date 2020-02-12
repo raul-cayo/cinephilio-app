@@ -67,8 +67,8 @@ class Seen extends React.Component {
   }
 
   addMovie= (liked, movieId) =>{
-    console.log("Añadiendo peli", liked, movieId)
-    console.log(JSON.stringify({liked_by_user: liked, is_deleted: false}))
+    // console.log("Añadiendo peli", liked, movieId)
+    // console.log(JSON.stringify({liked_by_user: liked, is_deleted: false}))
     axios.put(`https://cinephilio-api.herokuapp.com/movie-seen/${movieId}`,
     JSON.stringify({liked_by_user: liked, is_deleted: false}),
     {headers: {"Content-type": "application/json",
