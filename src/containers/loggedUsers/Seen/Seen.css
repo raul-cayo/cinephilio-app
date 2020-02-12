@@ -21,3 +21,9 @@
 .seen-actions .material-icons.trash:hover {
   color: rgb(227, 49, 49);
 }
+
+.movie-deleting-text{
+  display: inline;
+  position: absolute;
+  margin-left: -7rem;
+}

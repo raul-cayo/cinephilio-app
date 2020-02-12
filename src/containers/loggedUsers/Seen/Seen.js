@@ -36,7 +36,7 @@ class Seen extends React.Component {
     {headers: {'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
     .then((res) => {
       // console.log(res.data.movies_seen)
-      let arrayUsuario = res.data.movies_seen.map(movie => {
+      let arrayUsuario = res.data.movies_seen.filter(movie => {
         if(!movie.is_deleted) return movie.movie_id})
       // console.log(arrayUsuario)
       //Llamada para tener la lista de todas las películas
@@ -44,6 +44,7 @@ class Seen extends React.Component {
       JSON.stringify({movies_id: arrayUsuario}),
       {headers:{ 'Content-Type': 'application/json'}})
       .then((res2) => {
+        // console.log(res2)
         let unionArray = res.data.movies_seen.map((item,i) => {
           if(item.movie_id === res2.data.movies_seen[i].movie_id){
             return Object.assign({},item,res2.data.movies_seen[i])
@@ -65,7 +66,14 @@ class Seen extends React.Component {
     JSON.stringify({liked_by_user: state, is_deleted: isDeleted}),
     {headers: {"Content-type": "application/json",
                'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
-               .then(res => console.log(res))
+               .then(res => {
+                  if(isDeleted){
+                    let nuevo = (this.state.moviesSeen.filter(obj => obj.movie_id !== movieId))
+                    this.setState({
+                      moviesSeen: nuevo
+                    })
+                  }
+               })
                .catch(err => console.log(err))
   }
 
@@ -79,7 +87,7 @@ class Seen extends React.Component {
             movieId={movie.movie_id}
             title={movie.title}
             liked={movie.liked_by_user}
-            likeChange={this.changeState}
+            stateChange={this.changeState}
             year={movie.release_date} />
         })}
       </ul>
