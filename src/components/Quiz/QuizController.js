@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 import QuizQuestions from './QuizQuestions';
-import QuestionServer from './QuestionServer';
 import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
 import LoadingModal from '../LoadingModal/LoadingModal';
 import './QuizController.css';
@@ -23,7 +22,7 @@ class QuizController extends React.Component {
   }
 
   getQuestionsRequest() {
-    let data = { questions_id: [] };
+    let data = { questions_id: [] }; // TODO update and send questions done by user
     axios.post('https://cinephilio-engine.herokuapp.com/quiz',
       JSON.stringify(data),
       { headers: { 'Content-Type': 'application/json' } }
@@ -40,13 +39,6 @@ class QuizController extends React.Component {
         console.log('catch: ' + err);
         this.setState({ isLoading: false });
       });
-
-    // QuestionServer().then(questions => {
-    //   this.setState({
-    //     quiz: questions,
-    //     isLoading: false
-    //   });
-    // });
   };
 
   getResultRequest(profile, moviesSeen = []) {
@@ -68,6 +60,47 @@ class QuizController extends React.Component {
       },
       isLoading: false
     });
+  }
+
+  getCurrentProfileRequest() {
+    this.setState({ isLoading: true });
+
+    setTimeout(() => {
+      if (this.props.anon) {
+        this.getResultRequest(this.state.profile);
+      }
+      else {
+        axios.put(
+          'https://cinephilio-api.herokuapp.com/profile',
+          JSON.stringify(this.state.profile),
+          { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') } }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            let currentProfile = res.data;
+
+            axios.get('https://cinephilio-api.herokuapp.com/movies-seen',
+              {headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token')}}
+            )
+            .then((res) => {
+              let moviesSeenList = [];
+              res.data.movies_seen
+
+              res.data.movies_seen.forEach(movie => {
+                moviesSeenList.push(movie.movie_id);
+              });
+
+              this.getResultRequest(currentProfile, moviesSeenList);
+            })
+            .catch((err) => { console.log(err); });
+
+          } else {
+            console.log("Error getCurrentProfileRequest: " + res.status);
+          }
+        })
+        .catch((err) => { console.log(err); });
+      }
+    }, 700);
   }
 
   setProfile(data) {
@@ -102,35 +135,6 @@ class QuizController extends React.Component {
         profile: finalProfile
       });
     }
-  }
-
-  getResult() {
-    this.setState({ isLoading: true });
-
-    setTimeout(() => {
-      if (this.props.anon) {
-        this.getResultRequest(this.state.profile);
-      }
-      else {
-        axios.get( // TODO change this method on the api to get all info needed an rename it profile
-          'https://cinephilio-api.herokuapp.com/user-profile',
-          { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') } }
-        )
-        .then((res) => {
-          if (res.status === 200) {
-            let currentProfile = res.data;
-            delete currentProfile.user_id;
-            console.log('hererere');
-            this.getResultRequest(currentProfile, []);
-          } else {
-            console.log("Error getResult user profile: " + res.status);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      }
-    }, 700);
   }
 
   componentDidMount() {
