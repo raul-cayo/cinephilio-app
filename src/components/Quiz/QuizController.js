@@ -84,7 +84,6 @@ class QuizController extends React.Component {
             )
             .then((res) => {
               let moviesSeenList = [];
-              res.data.movies_seen
 
               res.data.movies_seen.forEach(movie => {
                 moviesSeenList.push(movie.movie_id);
