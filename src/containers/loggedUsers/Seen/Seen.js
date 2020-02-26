@@ -33,7 +33,8 @@ class Seen extends React.Component {
   componentDidMount() {
     //Llamada para tener la lista del usuario
     axios.get('https://cinephilio-api.herokuapp.com/movies-seen',
-    {headers: {'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
+      {headers: {'Authorization': 'Bearer ' + window.localStorage.getItem('access_token')}}
+    )
     .then((res) => {
       // console.log(res.data.movies_seen)
       let arrayUsuario = []
@@ -62,7 +63,7 @@ class Seen extends React.Component {
       })
       .catch(error => console.log(error))
     })
-    .catch((err) => console.log("Error en la matrix"))
+    .catch((err) => console.log("Error en la matrix"));
   }
 
   changeState = (state, movieId, isDeleted) =>{
