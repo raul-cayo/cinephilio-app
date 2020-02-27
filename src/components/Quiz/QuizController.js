@@ -55,7 +55,7 @@ class QuizController extends React.Component {
       movies_seen: moviesSeen
     }
 
-    axios.post('https://cinephilio-api.herokuapp.com/recommendation',
+    axios.post('https://cinephilio-engine.herokuapp.com/recommendation',
       JSON.stringify(data),
       { headers: { 'Content-Type': 'application/json' } }
     )
