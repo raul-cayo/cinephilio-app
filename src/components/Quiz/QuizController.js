@@ -141,6 +141,7 @@ class QuizController extends React.Component {
   }
 
   likeRecommendation() {
+    console.log(this.state);
     axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
       JSON.stringify({liked_by_user: true, is_deleted: false}),
       { headers: {
