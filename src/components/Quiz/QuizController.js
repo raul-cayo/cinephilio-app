@@ -28,7 +28,7 @@ class QuizController extends React.Component {
       { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
     ).then(res => {
       let questions_list = [];
-      for (question in res.data.questions_asked){
+      for (question of res.data.questions_asked){
         questions_list.push(question.questions_id);
       }
       let data = { questions_id: questions_list };
@@ -41,7 +41,7 @@ class QuizController extends React.Component {
           this.setState({ quiz: res.data.quiz, isLoading: false });
 
           let questions_id = [];
-          for (question in res.data.quiz) {
+          for (question of res.data.quiz) {
             questions_id.push(question.questions_id);
           }
 
