@@ -24,14 +24,35 @@ class QuizController extends React.Component {
   }
 
   getQuestionsRequest() {
-    let data = { questions_id: [] }; // TODO update and send questions done by user
-    axios.post('https://cinephilio-engine.herokuapp.com/quiz',
-      JSON.stringify(data),
-      { headers: { 'Content-Type': 'application/json' } }
-    )
+    axios.get('https://cinephilio-api.herokuapp.com/questions-asked',
+      { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
+    ).then(res => {
+      let questions_list = [];
+      for (question in res.questions_asked){
+        questions_list.push(question.questions_id);
+      }
+      let data = { questions_id: questions_list };
+      axios.post('https://cinephilio-engine.herokuapp.com/quiz',
+        JSON.stringify(data),
+        { headers: { 'Content-Type': 'application/json' } }
+      )
       .then((res) => {
         if (res.status === 200) {
           this.setState({ quiz: res.data.quiz, isLoading: false });
+
+          let questions_id = [];
+          for (question in res.data.quiz) {
+            questions_id.push(question.questions_id);
+          }
+
+          axios.put('https://cinephilio-api.herokuapp.com/question-asked',
+            JSON.stringify({questions_asked: questions_id}),
+            { headers: { 
+              'Authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+              'Content-Type': 'application/json'
+            }}
+          );
+
         } else {
           console.log("Error loginRequest status: " + res.status);
           this.setState({ isLoading: false });
@@ -41,6 +62,7 @@ class QuizController extends React.Component {
         console.log('catch: ' + err);
         this.setState({ isLoading: false });
       });
+    });
   };
 
   getResultRequest(profile, moviesSeen = []) {
