@@ -235,12 +235,12 @@ class QuizController extends React.Component {
                 !this.props.anon &&
                 <div className="row justify-content-around">
                   <Link className="btn cbt-blue btn-block py-3 mt-4 col-5"
-                    onClick={}
+                    onClick={this.likeRecommendation}
                     to="/home">
                     <i className="material-icons">thumb_up</i>
                   </Link>
                   <Link className="btn cbt-blue btn-block py-3 mt-4 col-5"
-                    onClick={}
+                    onClick={this.dislikeRecommendation}
                     to="/home">
                     <i className="material-icons">thumb_down</i>
                   </Link>
