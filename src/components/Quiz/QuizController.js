@@ -150,8 +150,25 @@ class QuizController extends React.Component {
         'Authorization': 'Bearer ' + localStorage.getItem('access_token')
       }}
     )
-    .then(res => {
-      window.location.href = "https://cinephilio-app.herokuapp.com/home";
+    .then((res) => {
+      let data = {
+        movie_id: this.state.recommendation.movie_id,
+        profile: this.state.profile
+      }
+      axios.put('https://cinephilio-engine.herokuapp.com/update-movie',
+        JSON.stringify(data),
+        { headers: {
+          "Content-type": "application/json"
+        }}
+      )
+      .then(res => {
+        if (!this.props.anon) {
+          window.location.href = "https://cinephilio-app.herokuapp.com/home";
+        } else {
+          window.location.href = "https://cinephilio-app.herokuapp.com/";
+        }
+      })
+      .catch(err => console.log(err));
     })
     .catch(err => console.log(err));
   }
@@ -164,21 +181,12 @@ class QuizController extends React.Component {
         'Authorization': 'Bearer ' + localStorage.getItem('access_token')
       }}
     )
-    .then((res) => {
-      let data = {
-        movie_id: this.state.recommendation.movie_id,
-        profile: this.state.profile
-      }
-      axios.put('https://cinephilio-api.herokuapp.com/update-movie',
-        JSON.stringify(data),
-        { headers: {
-          "Content-type": "application/json"
-        }}
-      )
-      .then(res => {
+    .then(res => {
+      if (!this.props.anon) {
         window.location.href = "https://cinephilio-app.herokuapp.com/home";
-      })
-      .catch(err => console.log(err));
+      } else {
+        window.location.href = "https://cinephilio-app.herokuapp.com/";
+      }
     })
     .catch(err => console.log(err));
   }
@@ -239,20 +247,16 @@ class QuizController extends React.Component {
                 </div>
               </div>
 
-              {
-                !this.props.anon &&
-                <div className="row justify-content-around">
-                  <button className="btn cbt-blue btn-block py-3 mt-4 col-5"
-                    onClick={this.likeRecommendation}>
-                    <i className="material-icons">thumb_up</i>
-                  </button>
-                  <button className="btn cbt-blue btn-block py-3 mt-4 col-5"
-                    onClick={this.dislikeRecommendation}>
-                    <i className="material-icons">thumb_down</i>
-                  </button>
-                </div>
-              }
-              {this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/">Terminar</Link>}
+              <div className="row justify-content-around">
+                <button className="btn cbt-blue btn-block py-3 mt-4 col-5"
+                  onClick={this.likeRecommendation}>
+                  <i className="material-icons">thumb_up</i>
+                </button>
+                <button className="btn cbt-blue btn-block py-3 mt-4 col-5"
+                  onClick={this.dislikeRecommendation}>
+                  <i className="material-icons">thumb_down</i>
+                </button>
+              </div>
 
             </div>
           </div>
