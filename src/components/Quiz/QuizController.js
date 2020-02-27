@@ -94,6 +94,7 @@ class QuizController extends React.Component {
         this.getResultRequest(this.state.profile);
       }
       else {
+        console.log(this.state.profile);
         axios.put('https://cinephilio-api.herokuapp.com/profile',
           JSON.stringify(this.state.profile),
           { headers: { 
