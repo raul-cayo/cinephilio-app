@@ -163,7 +163,7 @@ class QuizController extends React.Component {
               <SpeechBalloon>Mmm... creo conocer una película que te va a gustar.</SpeechBalloon>
               <button 
                 className="btn cbt-blue btn-block py-3 mt-4"
-                onClick={this.getResult.bind(this)}
+                onClick={this.getCurrentProfileRequest.bind(this)}
               >Ver recomendación</button>
             </div>
           </div>
