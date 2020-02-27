@@ -148,6 +148,9 @@ class QuizController extends React.Component {
         'Authorization': 'Bearer ' + localStorage.getItem('access_token')
       }}
     )
+    .then(res => {
+      window.location.href = "https://cinephilio-app.herokuapp.com/home";
+    })
     .catch(err => console.log(err));
   }
 
@@ -170,6 +173,9 @@ class QuizController extends React.Component {
           "Content-type": "application/json"
         }}
       )
+      .then(res => {
+        window.location.href = "https://cinephilio-app.herokuapp.com/home";
+      })
       .catch(err => console.log(err));
     })
     .catch(err => console.log(err));
@@ -234,16 +240,14 @@ class QuizController extends React.Component {
               {
                 !this.props.anon &&
                 <div className="row justify-content-around">
-                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-5"
-                    onClick={this.likeRecommendation}
-                    to="/home">
+                  <button className="btn cbt-blue btn-block py-3 mt-4 col-5"
+                    onClick={this.likeRecommendation}>
                     <i className="material-icons">thumb_up</i>
-                  </Link>
-                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-5"
-                    onClick={this.dislikeRecommendation}
-                    to="/home">
+                  </button>
+                  <button className="btn cbt-blue btn-block py-3 mt-4 col-5"
+                    onClick={this.dislikeRecommendation}>
                     <i className="material-icons">thumb_down</i>
-                  </Link>
+                  </button>
                 </div>
               }
               {this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/">Terminar</Link>}
