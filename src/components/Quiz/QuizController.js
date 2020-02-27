@@ -129,38 +129,26 @@ class QuizController extends React.Component {
     }, 700);
   }
 
-  setProfile(data) {
+  selectAnswer(answer) {
     let newProfile = { ...this.state.profile };
-    let attrCount = { ...this.state.attrCount };
-    Object.keys(data).forEach(function (key) {
-      newProfile[key] = newProfile[key] ? newProfile[key] + data[key] : data[key];
-      attrCount[key] = attrCount[key] ? attrCount[key] + 1 : 1;
+    let newAttrCount = { ...this.state.attrCount };
+
+    Object.keys(answer).forEach(function (key) {
+      newProfile[key] = newProfile[key] ? newProfile[key] + answer[key] : answer[key];
+      newAttrCount[key] = newAttrCount[key] ? newAttrCount[key] + 1 : 1;
     });
+
+    if (this.state.questionNumber + 1 == this.state.quiz.length) {
+      Object.keys(newAttrCount).forEach((key) => {
+        newProfile[key] = Math.round(newProfile[key] / newAttrCount[key])
+      });
+    }
 
     this.setState({
+      questionNumber: this.state.questionNumber + 1,
       profile: newProfile,
-      attrCount: attrCount
+      attrCount: newAttrCount
     });
-  }
-
-  selectAnswer(e) {
-    this.setProfile(e);
-    if (this.state.questionNumber + 1 < this.state.quiz.length) {
-      this.setState({
-        questionNumber: this.state.questionNumber + 1
-      });
-    }
-    else {
-      let finalProfile = { ...this.state.profile };
-      let finalAttrCount = { ...this.state.attrCount };
-      Object.keys(finalAttrCount).forEach((key) => {
-        finalProfile[key] = Math.round(finalProfile[key] / finalAttrCount[key])
-      });
-      this.setState({
-        questionNumber: this.state.questionNumber + 1,
-        profile: finalProfile
-      });
-    }
   }
 
   componentDidMount() {
