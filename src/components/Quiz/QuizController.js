@@ -63,10 +63,10 @@ class QuizController extends React.Component {
         this.state({
           questionNumber: 99,
           recommendation: {
-            movie_id: res.recommendation.movie_id,
-            poster_path: res.recommendation.poster_path,
-            title: res.recommendation.title,
-            release_date: res.recommendation.release_date
+            movie_id: res.recommendation[0].movie_id,
+            poster_path: res.recommendation[0].poster_path,
+            title: res.recommendation[0].title,
+            release_date: res.recommendation[0].release_date
           },
           isLoading: false
         });
