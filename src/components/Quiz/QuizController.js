@@ -140,6 +140,41 @@ class QuizController extends React.Component {
     });
   }
 
+  likeRecommendation() {
+    axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
+      JSON.stringify({liked_by_user: true, is_deleted: false}),
+      { headers: {
+        "Content-type": "application/json",
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      }}
+    )
+    .catch(err => console.log(err));
+  }
+
+  dislikeRecommendation() {
+    axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
+      JSON.stringify({liked_by_user: false, is_deleted: false}),
+      { headers: {
+        "Content-type": "application/json",
+        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+      }}
+    )
+    .then((res) => {
+      let data = {
+        movie_id: this.state.recommendation.movie_id,
+        profile: this.state.profile
+      }
+      axios.put('https://cinephilio-api.herokuapp.com/update-movie',
+        JSON.stringify(data),
+        { headers: {
+          "Content-type": "application/json"
+        }}
+      )
+      .catch(err => console.log(err));
+    })
+    .catch(err => console.log(err));
+  }
+
   componentDidMount() {
     setTimeout(() => {
       this.getQuestionsRequest();
@@ -198,11 +233,15 @@ class QuizController extends React.Component {
 
               {
                 !this.props.anon &&
-                <div className="row justify-content-between">
-                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-5" to="/home">
+                <div className="row justify-content-around">
+                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-5"
+                    onClick={}
+                    to="/home">
                     <i className="material-icons">thumb_up</i>
                   </Link>
-                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-5" to="/home">
+                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-5"
+                    onClick={}
+                    to="/home">
                     <i className="material-icons">thumb_down</i>
                   </Link>
                 </div>

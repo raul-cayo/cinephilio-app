@@ -66,7 +66,7 @@ class Seen extends React.Component {
     .catch((err) => console.log("Error en la matrix"));
   }
 
-  changeState = (state, movieId, isDeleted) =>{
+  changeState = (state, movieId, isDeleted) => {
     axios.put(`https://cinephilio-api.herokuapp.com/movie-seen/${movieId}`,
     JSON.stringify({liked_by_user: state, is_deleted: isDeleted}),
     {headers: {"Content-type": "application/json",

@@ -1,14 +1,14 @@
 import React, {useState} from 'react';
 
 export default (props) => {
-  const [liked, setLiked] = useState(props.liked)
-  const [deleting, setDeleting] = useState(false)
+  const [liked, setLiked] = useState(props.liked);
+  const [deleting, setDeleting] = useState(false);
   function changeLike(estado){
     if(estado !== liked){
-      setLiked(estado)
-      props.stateChange(estado,props.movieId,false)
+      setLiked(estado);
+      props.stateChange(estado,props.movieId,false);
     }
-    return
+    return;
   }
 
   return (
