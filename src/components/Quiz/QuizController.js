@@ -73,17 +73,6 @@ class QuizController extends React.Component {
       }
     )
     .catch((err) => { console.log(err); });
-
-    // this.setState({
-    //   questionNumber: 99,
-    //   recommendation: {
-    //     movie_id: 339,
-    //     poster_path: "/aREHjLD3kwQFcL1ncNOx8ggDGxA.jpg",
-    //     title: "Night On Earth",
-    //     release_date: "1991"
-    //   },
-    //   isLoading: false
-    // });
   }
 
   getCurrentProfileRequest() {
@@ -207,7 +196,13 @@ class QuizController extends React.Component {
                 </div>
               </div>
 
-              {this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/">Terminar</Link>}
+              {
+                this.props.anon &&
+                <div class="row">
+                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-6" to="/"><i>thumb_up</i></Link>
+                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-6" to="/"><i>thumb_down</i></Link>
+                </div>
+              }
               {!this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/home">Terminar</Link>}
 
             </div>
