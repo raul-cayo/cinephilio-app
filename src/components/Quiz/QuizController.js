@@ -70,10 +70,12 @@ class QuizController extends React.Component {
         this.getResultRequest(this.state.profile);
       }
       else {
-        let data = {...this.state.profile};
         axios.put('https://cinephilio-api.herokuapp.com/profile',
-          JSON.stringify(data),
-          { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') } }
+          JSON.stringify(this.state.profile),
+          { headers: { 
+            'Authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+            'Content-Type': 'application/json'
+          } }
         )
         .then((res) => {
           if (res.status === 200) {
