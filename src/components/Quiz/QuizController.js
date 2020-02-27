@@ -197,13 +197,17 @@ class QuizController extends React.Component {
               </div>
 
               {
-                this.props.anon &&
-                <div class="row">
-                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-6" to="/"><i>thumb_up</i></Link>
-                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-6" to="/"><i>thumb_down</i></Link>
+                !this.props.anon &&
+                <div className="row">
+                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-6" to="/home">
+                    <i className="material-icons">thumb_up</i>
+                  </Link>
+                  <Link className="btn cbt-blue btn-block py-3 mt-4 col-6" to="/home">
+                    <i className="material-icons">thumb_down</i>
+                  </Link>
                 </div>
               }
-              {!this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/home">Terminar</Link>}
+              {this.props.anon && <Link className="btn cbt-blue btn-block py-3 mt-4" to="/">Terminar</Link>}
 
             </div>
           </div>
