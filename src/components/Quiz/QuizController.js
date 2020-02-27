@@ -29,7 +29,7 @@ class QuizController extends React.Component {
     ).then(res => {
       let questions_list = [];
       for (let question of res.data.questions_asked){
-        questions_list.push(question.questions_id);
+        questions_list.push(question.question_id);
       }
       let data = { questions_id: questions_list };
       axios.post('https://cinephilio-engine.herokuapp.com/quiz',
@@ -42,7 +42,7 @@ class QuizController extends React.Component {
 
           let questions_id = [];
           for (let question of res.data.quiz) {
-            questions_id.push(question.questions_id);
+            questions_id.push(question.question_id);
           }
 
           axios.put('https://cinephilio-api.herokuapp.com/question-asked',
