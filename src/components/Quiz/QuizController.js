@@ -60,7 +60,7 @@ class QuizController extends React.Component {
       { headers: { 'Content-Type': 'application/json' } }
     )
     .then((res) => {
-        this.state({
+        this.setState({
           questionNumber: 99,
           recommendation: {
             movie_id: res.data.recommendation[0].movie_id,
