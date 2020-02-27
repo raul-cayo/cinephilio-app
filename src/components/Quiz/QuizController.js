@@ -42,24 +42,48 @@ class QuizController extends React.Component {
   };
 
   getResultRequest(profile, moviesSeen = []) {
-    // send profile and movies seen
-    // get movie recommendation and change state
+    let data = {
+      profile: [
+        profile.complexity,
+        profile.education,
+        profile.originality,
+        profile.production,
+        profile.realism,
+        profile.tension,
+        profile.violence
+      ],
+      movies_seen: moviesSeen
+    }
 
-    console.log("profile");
-    console.log(profile);
-    console.log("movies seen");
-    console.log(moviesSeen);
+    axios.post('https://cinephilio-api.herokuapp.com/recommendation',
+      JSON.stringify(data),
+      { headers: { 'Content-Type': 'application/json' } }
+    )
+    .then((res) => {
+        this.state({
+          questionNumber: 99,
+          recommendation: {
+            movie_id: res.recommendation.movie_id,
+            poster_path: res.recommendation.poster_path,
+            title: res.recommendation.title,
+            release_date: res.recommendation.release_date
+          },
+          isLoading: false
+        });
+      }
+    )
+    .catch((err) => { console.log(err); });
 
-    this.setState({
-      questionNumber: 99,
-      recommendation: {
-        movie_id: 339,
-        poster_path: "/aREHjLD3kwQFcL1ncNOx8ggDGxA.jpg",
-        title: "Night On Earth",
-        release_date: "1991"
-      },
-      isLoading: false
-    });
+    // this.setState({
+    //   questionNumber: 99,
+    //   recommendation: {
+    //     movie_id: 339,
+    //     poster_path: "/aREHjLD3kwQFcL1ncNOx8ggDGxA.jpg",
+    //     title: "Night On Earth",
+    //     release_date: "1991"
+    //   },
+    //   isLoading: false
+    // });
   }
 
   getCurrentProfileRequest() {
@@ -75,7 +99,7 @@ class QuizController extends React.Component {
           { headers: { 
             'Authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
             'Content-Type': 'application/json'
-          } }
+          }}
         )
         .then((res) => {
           if (res.status === 200) {
