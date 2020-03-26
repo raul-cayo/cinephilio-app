@@ -16,6 +16,7 @@ class Profile extends React.Component {
       birthdate: '',
       password: '',
       old_password: '',
+      verifiedAccount: false,
       errors: {},
       isLoading: true
     }
@@ -146,6 +147,16 @@ class Profile extends React.Component {
                 <div className="input-group">
                   <input onChange={this.updateInput.bind(this)} value={this.state.password} type="password" name="password" className="form-control" data-toggle="password" />
                 </div>
+              </div>
+
+              <div className="form-group">
+                <label className="control-label">Verificación de cuenta</label>
+                {(this.state.verifiedAccount) ? 
+                <div style={{display: "block"}} className="alert alert-success">Cuenta verificada</div> : 
+                <div style={{display: "block"}} className="alert alert-danger">
+                  <span style={{display: "block"}}>No has verificado tu cuenta</span>
+                  <a href="https://www.google.com" target="_blank">Haz clic aquí para enviar un correo a tu cuenta</a>
+                </div>}
               </div>
               <div className="form-group mt-5">
                 <button className="btn cbt-blue btn-block">Guardar Cambios</button>
