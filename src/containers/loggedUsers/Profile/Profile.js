@@ -33,6 +33,7 @@ class Profile extends React.Component {
             email: res.data.email,
             old_password: res.data.password,
             birthdate: res.data.birthdate,
+            verifiedAccount: res.data.authentication,
             isLoading: false
           });
         } else {
@@ -105,6 +106,32 @@ class Profile extends React.Component {
     }, 700);
   }
 
+  sendAuthToken=()=>{
+    axios.get('https://cinephilio-api.herokuapp.com/auth',
+      {
+        headers:
+        {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + window.localStorage.getItem('access_token')
+        }
+      }
+    )
+    .then((res) => {
+      console.log(res)
+      alert("Mensaje de confirmación enviado")
+    })
+    .catch((err) => {
+      console.log("Auth token error")
+    })
+  }
+
+  authRequest=(e)=>{
+    e.preventDefault()
+    setTimeout(() => {
+      this.sendAuthToken();
+    }, 700);
+  }
+
   render() {
     const errors = this.state.errors;
 
@@ -155,7 +182,7 @@ class Profile extends React.Component {
                 <div style={{display: "block"}} className="alert alert-success">Cuenta verificada</div> : 
                 <div style={{display: "block"}} className="alert alert-danger">
                   <span style={{display: "block"}}>No has verificado tu cuenta</span>
-                  <a href="https://www.google.com" target="_blank">Haz clic aquí para enviar un correo a tu cuenta</a>
+                  <a onClick={(e) => this.authRequest(e)} href="#">Haz clic aquí para enviar un correo a tu cuenta</a>
                 </div>}
               </div>
               <div className="form-group mt-5">
