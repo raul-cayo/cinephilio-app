@@ -109,11 +109,7 @@ class Seen extends React.Component {
             </SpeechBalloon>
 
             <div style={{marginBottom: '1.5rem'}} className="row">
-              <input 
-                placeholder = "Busca una película"
-                onChange = {this.handleChange}
-                style={{marginBottom: '0.5rem'}} 
-                className="text-box col-12 col-md-6 py-2"/>
+              <input placeholder = "Busca una película" onChange={this.handleChange} type="text" className="form-control" />
 
               {movieList}
 
