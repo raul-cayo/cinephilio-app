@@ -24,45 +24,70 @@ class QuizController extends React.Component {
   }
 
   getQuestionsRequest() {
-    axios.get('https://cinephilio-api.herokuapp.com/questions-asked',
-      { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
-    ).then(res => {
-      let questions_list = [];
-      for (let question of res.data.questions_asked){
-        questions_list.push(question.question_id);
-      }
-      let data = { questions_id: questions_list };
-      axios.post('https://cinephilio-engine.herokuapp.com/quiz',
-        JSON.stringify(data),
-        { headers: { 'Content-Type': 'application/json' } }
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          this.setState({ quiz: res.data.quiz, isLoading: false });
+    if (this.props.anon) {
+        axios.post('https://cinephilio-engine.herokuapp.com/quiz',
+          JSON.stringify({ questions_id: [] }),
+          { headers: { 'Content-Type': 'application/json' } }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            this.setState({ quiz: res.data.quiz, isLoading: false });
 
-          let questions_id = [];
-          for (let question of res.data.quiz) {
-            questions_id.push(question.question_id);
+            let questions_id = [];
+            for (let question of res.data.quiz) {
+              questions_id.push(question.question_id);
+            }
+          } else {
+            console.log("Error loginRequest status: " + res.status);
+            this.setState({ isLoading: false });
           }
-
-          axios.put('https://cinephilio-api.herokuapp.com/question-asked',
-            JSON.stringify({questions_asked: questions_id}),
-            { headers: { 
-              'Authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
-              'Content-Type': 'application/json'
-            }}
-          );
-
-        } else {
-          console.log("Error loginRequest status: " + res.status);
+        })
+        .catch((err) => {
+          console.log('catch: ' + err);
           this.setState({ isLoading: false });
+        });
+
+    } else {
+      axios.get('https://cinephilio-api.herokuapp.com/questions-asked',
+        { headers: { 'Authorization': 'Bearer ' + window.localStorage.getItem('access_token') }}
+      ).then(res => {
+        let questions_list = [];
+        for (let question of res.data.questions_asked){
+          questions_list.push(question.question_id);
         }
-      })
-      .catch((err) => {
-        console.log('catch: ' + err);
-        this.setState({ isLoading: false });
+        let data = { questions_id: questions_list };
+        axios.post('https://cinephilio-engine.herokuapp.com/quiz',
+          JSON.stringify(data),
+          { headers: { 'Content-Type': 'application/json' } }
+        )
+        .then((res) => {
+          if (res.status === 200) {
+            this.setState({ quiz: res.data.quiz, isLoading: false });
+
+            let questions_id = [];
+            for (let question of res.data.quiz) {
+              questions_id.push(question.question_id);
+            }
+
+            axios.put('https://cinephilio-api.herokuapp.com/question-asked',
+              JSON.stringify({questions_asked: questions_id}),
+              { headers: { 
+                'Authorization': 'Bearer ' + window.localStorage.getItem('access_token'),
+                'Content-Type': 'application/json'
+              }}
+            );
+
+          } else {
+            console.log("Error loginRequest status: " + res.status);
+            this.setState({ isLoading: false });
+          }
+        })
+        .catch((err) => {
+          console.log('catch: ' + err);
+          this.setState({ isLoading: false });
+        });
       });
-    });
+    }
   };
 
   getResultRequest(profile, moviesSeen = []) {
@@ -165,14 +190,7 @@ class QuizController extends React.Component {
   }
 
   likeRecommendation() {
-    axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
-      JSON.stringify({liked_by_user: true, is_deleted: false}),
-      { headers: {
-        "Content-type": "application/json",
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-      }}
-    )
-    .then((res) => {
+    if (this.props.anon) {
       let data = {
         movie_id: this.state.recommendation.movie_id,
         profile: this.state.profile
@@ -184,33 +202,54 @@ class QuizController extends React.Component {
         }}
       )
       .then(res => {
-        if (!this.props.anon) {
-          window.location.href = "https://cinephilio-app.herokuapp.com/home";
-        } else {
-          window.location.href = "https://cinephilio-app.herokuapp.com/";
-        }
+        window.location.href = "https://cinephilio-app.herokuapp.com/";
       })
       .catch(err => console.log(err));
-    })
-    .catch(err => console.log(err));
+
+    } else {
+      axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
+        JSON.stringify({liked_by_user: true, is_deleted: false}),
+        { headers: {
+          "Content-type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        }}
+      )
+      .then((res) => {
+        let data = {
+          movie_id: this.state.recommendation.movie_id,
+          profile: this.state.profile
+        }
+        axios.put('https://cinephilio-engine.herokuapp.com/update-movie',
+          JSON.stringify(data),
+          { headers: {
+            "Content-type": "application/json"
+          }}
+        )
+        .then(res => {
+          window.location.href = "https://cinephilio-app.herokuapp.com/home";
+        })
+        .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+    }
   }
 
   dislikeRecommendation() {
-    axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
-      JSON.stringify({liked_by_user: false, is_deleted: false}),
-      { headers: {
-        "Content-type": "application/json",
-        'Authorization': 'Bearer ' + localStorage.getItem('access_token')
-      }}
-    )
-    .then(res => {
-      if (!this.props.anon) {
+    if (this.props.anon) {
+      window.location.href = "https://cinephilio-app.herokuapp.com/";
+    } else {
+      axios.put('https://cinephilio-api.herokuapp.com/movie-seen/' + this.state.recommendation.movie_id,
+        JSON.stringify({liked_by_user: false, is_deleted: false}),
+        { headers: {
+          "Content-type": "application/json",
+          'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+        }}
+      )
+      .then(res => {
         window.location.href = "https://cinephilio-app.herokuapp.com/home";
-      } else {
-        window.location.href = "https://cinephilio-app.herokuapp.com/";
-      }
-    })
-    .catch(err => console.log(err));
+      })
+      .catch(err => console.log(err));
+    }
   }
 
   componentDidMount() {
