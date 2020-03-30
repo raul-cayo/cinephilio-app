@@ -112,7 +112,7 @@ class Seen extends React.Component {
               {movieList}
             </div>
 
-            <Link className="btn cbt-blue btn-block py-3 mt-4" to="/add-movie">
+            <Link className="btn cbt-blue btn-block py-3 my-4" to="/add-movie">
               Agregar Películas
             </Link>
           </div>

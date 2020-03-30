@@ -114,13 +114,12 @@ class Seen extends React.Component {
                 onChange = {this.handleChange}
                 style={{marginBottom: '0.5rem'}} 
                 className="text-box col-12 col-md-6 py-2"/>
-                
-              <Link style={{marginLeft:'1rem', width:'250px'}} to="/seen">
-                <button className="btn cbt-blue py-2 mt-1">
-                Regresar a mis películas
-                </button>
-              </Link>
+
               {movieList}
+
+              <Link className="btn cbt-blue btn-block py-3 my-4" to="/seen">
+                  Regresar a mis películas
+              </Link>
             </div>
 
             {/* <Link  className="btn cbt-blue btn-block py-3 mt-4" to="/add-movie">
