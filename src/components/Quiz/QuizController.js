@@ -26,7 +26,7 @@ class QuizController extends React.Component {
   getQuestionsRequest() {
     if (this.props.anon) {
         axios.post('https://cinephilio-engine.herokuapp.com/quiz',
-          JSON.stringify({ questions_id: [] }),
+          JSON.stringify({ questions_id: [], is_anonymous: true }),
           { headers: { 'Content-Type': 'application/json' } }
         )
         .then((res) => {
@@ -55,7 +55,7 @@ class QuizController extends React.Component {
         for (let question of res.data.questions_asked){
           questions_list.push(question.question_id);
         }
-        let data = { questions_id: questions_list };
+        let data = { questions_id: questions_list, is_anonymous: true };
         axios.post('https://cinephilio-engine.herokuapp.com/quiz',
           JSON.stringify(data),
           { headers: { 'Content-Type': 'application/json' } }
