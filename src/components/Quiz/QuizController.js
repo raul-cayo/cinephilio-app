@@ -55,7 +55,7 @@ class QuizController extends React.Component {
         for (let question of res.data.questions_asked){
           questions_list.push(question.question_id);
         }
-        let data = { questions_id: questions_list, is_anonymous: true };
+        let data = { questions_id: questions_list, is_anonymous: false };
         axios.post('https://cinephilio-engine.herokuapp.com/quiz',
           JSON.stringify(data),
           { headers: { 'Content-Type': 'application/json' } }
