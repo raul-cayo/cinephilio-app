@@ -182,7 +182,9 @@ class Profile extends React.Component {
                 <div style={{display: "block"}} className="alert alert-success">Cuenta verificada</div> : 
                 <div style={{display: "block"}} className="alert alert-danger">
                   <span style={{display: "block"}}>No has verificado tu cuenta</span>
-                  <a onClick={(e) => this.authRequest(e)} href="#">Haz clic aquí para enviar un correo a tu cuenta</a>
+                  <button style={{background: "none", border:"none", padding:"0!important", textDecoration:"underline", cursor:"pointer"}} onClick={(e) => this.authRequest(e)}>
+                    Haz clic aquí para enviar un correo a tu cuenta
+                  </button>
                 </div>}
               </div>
               <div className="form-group mt-5">
