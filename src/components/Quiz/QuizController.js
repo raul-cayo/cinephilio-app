@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 import QuizQuestions from './QuizQuestions';
 import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
@@ -176,7 +175,7 @@ class QuizController extends React.Component {
       newAttrCount[key] = newAttrCount[key] ? newAttrCount[key] + 1 : 1;
     });
 
-    if (this.state.questionNumber + 1 == this.state.quiz.length) {
+    if (this.state.questionNumber + 1 === this.state.quiz.length) {
       Object.keys(newAttrCount).forEach((key) => {
         newProfile[key] = Math.round(newProfile[key] / newAttrCount[key])
       });

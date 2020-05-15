@@ -50,11 +50,13 @@ class Seen extends React.Component {
       {headers:{ 'Content-Type': 'application/json'}})
       .then((res2) => {
         // console.log(res2)
-        let unionArray = res.data.movies_seen.map((item,i) => {
-          if(item.movie_id === res2.data.movies_seen[i].movie_id){
-            return Object.assign({},item,res2.data.movies_seen[i])
-          }
-        })
+
+        let unionArray = []
+
+        for(let i =0; i< res2.data.movies_seen.length; i++){
+          unionArray.push(Object.assign({},res.data.movies_seen[i], res2.data.movies_seen[i]))
+        }
+        
         // console.log(unionArray)
         this.setState({
           moviesSeen: unionArray,

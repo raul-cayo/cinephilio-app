@@ -2,7 +2,7 @@ import React from 'react';
 
 import AnonNavbar from '../../../components/Navbar/AnonNavbar';
 import SpeechBalloon from '../../../components/SpeechBalloon/SpeechBalloon';
-import PicLuis from '../../../images/developers/luis.jpg';
+import PicLuis from '../../../images/developers/luis 2.jpg';
 import PicCayo from '../../../images/developers/cayo.jpg';
 import PicDiego from '../../../images/developers/diego.jpg';
 import './About.css';
@@ -21,7 +21,7 @@ function About(props) {
           <div className="udg row mt-5">
             <div className="col-8 offset-2 offset-sm-0 col-sm-4 px-5 px-sm-3">
               <div className="avatar mx-auto mb-2">
-                <img alt="Cayo" src={PicCayo} className="letter letterU img-fluid" />
+                <img alt="Cayo" src={PicCayo} className="letter letterU img-fluid imgStyle" />
               </div>
               <p className="text-center mb-1">Raúl Sanchez</p>
               <p className="text-center mt-0"><strong>ING. INFORMÁTICA</strong></p>
@@ -29,7 +29,7 @@ function About(props) {
 
             <div className="col-8 offset-2 offset-sm-0 col-sm-4 px-5 px-sm-3">
               <div className="avatar mx-auto mb-2">
-                <img alt="Diego" src={PicDiego} className="letter letterD img-fluid" />
+                <img alt="Diego" src={PicDiego} className="letter letterD img-fluid imgStyle" />
               </div>
               <p className="text-center mb-1">Diego Ramírez</p>
               <p className="text-center mt-0"><strong>ING. COMPUTACIÓN</strong></p>
@@ -37,7 +37,7 @@ function About(props) {
 
             <div className="col-8 offset-2 offset-sm-0 col-sm-4 px-5 px-sm-3">
               <div className="avatar mx-auto mb-2">
-                <img alt="Luis" src={PicLuis} className="letter letterG img-fluid" />
+                <img alt="Luis" src={PicLuis} className="letter letterG img-fluid imgStyle" />
               </div>
               <p className="text-center mb-1">Luis Hernández</p>
               <p className="text-center mt-0"><strong>ING. INFORMÁTICA</strong></p>

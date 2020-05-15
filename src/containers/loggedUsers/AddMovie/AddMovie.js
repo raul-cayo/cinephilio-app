@@ -27,9 +27,8 @@ class Seen extends React.Component {
     axios.get('https://cinephilio-api.herokuapp.com/movies-seen',
     {headers: {'Authorization': 'Bearer ' + localStorage.getItem('access_token')}})
     .then((res) => {
-      let arrayUsuario = res.data.movies_seen.map(movie => {
-        if(!movie.is_deleted) return movie.movie_id
-      })
+      // console.log(res)
+      let arrayUsuario = res.data.movies_seen.map(movie => movie.movie_id)
       //Llamada para tener la lista de todas las películas
       axios.post('https://cinephilio-engine.herokuapp.com/all-movies',
       JSON.stringify({movies_id: arrayUsuario}),
