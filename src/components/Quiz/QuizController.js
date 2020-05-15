@@ -302,7 +302,7 @@ class QuizController extends React.Component {
                 <div className="col-4 p-0">
                   <img
                     className="img-fluid"
-                    src={ "http://image.tmdb.org/t/p/w500/" + this.state.recommendation.poster_path}
+                    src={ "http://image.tmdb.org/t/p/w300_and_h450_bestv2/" + this.state.recommendation.poster_path}
                     alt="Movie Poster">
                   </img>
                 </div>
