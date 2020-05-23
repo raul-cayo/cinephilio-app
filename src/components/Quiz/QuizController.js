@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 
 import QuizQuestions from './QuizQuestions';
 import SpeechBalloon from '../SpeechBalloon/SpeechBalloon';
@@ -26,7 +25,7 @@ class QuizController extends React.Component {
   getQuestionsRequest() {
     if (this.props.anon) {
         axios.post('https://cinephilio-engine.herokuapp.com/quiz',
-          JSON.stringify({ questions_id: [] }),
+          JSON.stringify({ questions_id: [], is_anonymous: true }),
           { headers: { 'Content-Type': 'application/json' } }
         )
         .then((res) => {
@@ -55,7 +54,7 @@ class QuizController extends React.Component {
         for (let question of res.data.questions_asked){
           questions_list.push(question.question_id);
         }
-        let data = { questions_id: questions_list };
+        let data = { questions_id: questions_list, is_anonymous: false };
         axios.post('https://cinephilio-engine.herokuapp.com/quiz',
           JSON.stringify(data),
           { headers: { 'Content-Type': 'application/json' } }
@@ -176,7 +175,7 @@ class QuizController extends React.Component {
       newAttrCount[key] = newAttrCount[key] ? newAttrCount[key] + 1 : 1;
     });
 
-    if (this.state.questionNumber + 1 == this.state.quiz.length) {
+    if (this.state.questionNumber + 1 === this.state.quiz.length) {
       Object.keys(newAttrCount).forEach((key) => {
         newProfile[key] = Math.round(newProfile[key] / newAttrCount[key])
       });
@@ -302,7 +301,11 @@ class QuizController extends React.Component {
                 <div className="col-4 p-0">
                   <img
                     className="img-fluid"
+<<<<<<< HEAD
                     src={ "http://image.tmdb.org/t/p/w500/" + this.state.recommendation.poster_path }
+=======
+                    src={ "http://image.tmdb.org/t/p/w300_and_h450_bestv2/" + this.state.recommendation.poster_path}
+>>>>>>> abc34ff874ba326f83982b295d611fbd1c720a7b
                     alt="Movie Poster">
                   </img>
                 </div>

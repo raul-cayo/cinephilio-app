@@ -16,7 +16,6 @@ export default (props) => {
         {!espera && <i onClick={() => {setEspera(!espera)}} className="material-icons mx-2">add_circle</i>}
         {!added && espera && 
         <React.Fragment>
-          <label className="movie-liked-text">¿Te gustó?</label>
           <i onClick={() => {newMovie(true)}} className="material-icons mx-2">thumb_up</i>
           <i onClick={() => {newMovie(false)}} className="material-icons mx-2">thumb_down</i>
           <i onClick={() => {setEspera(!espera)}} className="material-icons trash">cancel</i>
