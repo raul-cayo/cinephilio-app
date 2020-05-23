@@ -21,7 +21,6 @@ export default (props) => {
           <i onClick={() => setDeleting(true)} className="material-icons mx-2 trash">delete</i>
         </React.Fragment>}
         {deleting && <React.Fragment>
-          <label className="movie-deleting-text">¿Estás seguro?</label>
           <i onClick={()=>props.stateChange(liked,props.movieId,true)} className="material-icons mx-2">check_circle</i>
           <i onClick={()=>setDeleting(false)} className="material-icons mx-2">cancel</i>
         </React.Fragment>}
